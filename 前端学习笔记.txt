@@ -1,0 +1,4627 @@
+HTML--表格
+1：表格的基本组成
+<table>
+<tr><td></td></tr>
+<tr><td></td></tr>
+</table>
+table表示一个表格区域，tr管理行数，td管理列数，th管理表头，tbody管理表格主体，thead管理表格的页眉，tfoot管理表格的页脚
+
+2：管理单元边沿与其内容之间的空白（cellpadding）;
+
+3:管理单元格之间的空间（cellspacing）;
+
+4:表格的标题定义:<caption></caption>,紧随<table>之后
+
+
+5：rowspan=“3-----表示跨3行
+
+6：colspan="3"----表示跨3列
+
+
+
+HTML--表单
+1：文本框
+姓名：<input type="text" name="userName"/>//type="text"表示普通文本输入
+
+2：密码框
+密码：<input type="password" name="pwd" value="123456"/>//type="password"表示密码的输入
+
+3：单选框
+<input type="radio" name="sex"/>//type="radio",表示单选框
+
+4：多选框
+<input type="checkbox" name="hobby"/>足球<br>//这里type="checkbox"，表示多选框，注意type的值要一致
+<input type="checkbox" name="hobby"/>篮球   <br>
+<input type="checkbox" name="hobby"/>乒乓球
+
+
+5：checked属性（默认选中选项）
+<input type="checkbox" name="hobby" checked="checked"/>足球  <br>
+<input type="checkbox" name="hobby" checked="false"/>篮球   <br>
+<input type="checkbox" name="hobby" checked/>乒乓球
+
+为了规范书写，一般添加checked="checked"就可以了。
+
+checked 属性 与 <input type="checkbox"/> 或 <input type="radio"/> 一起配合使用。
+
+
+6：disabled属性（禁止选中）
+<input type="checkbox" name="course" disabled="disabled">影视鉴赏  <br>
+<input type="checkbox" name="course">中国语言文学<br>
+<input type="checkbox" name="course">心理学
+
+为了规范书写，一般添加disabled="disabled"就可以了。
+
+
+7：label标签（当点击用户该元素内的文本时，焦点会自动定位到与该标签绑定的表单元素上）
+<label for="user">用户：</label>    
+<input type="text" id="user" name="user"  /> <br><br>
+<label for="pwd">密码：</label>
+<input type="password" id="pwd" name="password"  />
+
+
+8：下拉列表
+<select>
+    <option value="apple">苹果</option>
+    <option value="banana">香蕉</option>
+    <option value="pear" selected="selected">梨</option>
+    <option value="apple">菠萝</option>
+</select>
+其中如果要指定某一个值为默认显示，添加selected="selected"即可
+
+
+
+9：文本域
+个人描述：<textarea maxlength="10"></textarea>//其中maxlength控制最大输入值
+
+
+10：提交按钮
+<input type="submit" value="提交按钮"/>
+
+
+
+
+
+
+
+
+
+
+
+article属性是HTML5的一个新属性，该标签定义独立的内容，定义的内容本身必须有意义且必须是独立于文档的其余部分
+
+section标签定义了文档的某一个区域，比如章节1，头部，底部或者文档的其他区域
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+CSS-样式申明
+1：外部样式：<link rel="stylesheet" href="houdunren.css" type="text/css">
+2：嵌入样式：<style></style>
+3:  内联样式： <h1 style="color:green;">houdunren.com</h1>
+4：导入模式： <style>@import url("index.css");body{background:red;}</style>
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+CSS-选择器
+1：类选择器可以多个一样命名，而id选择器在一个文档当中只能是一个，不能重名！！！
+2：每一个类选择器都可以看作是一个根，它们的子根命名可以一样，exp: (.one.two)
+
+1：.class             		exp:.intro                 选择所有class="intro"的元素
+
+2：#id                		exp:#firstname        选择所有id="firstname"的元素
+
+3：*                    		exp:*                        选择所有的元素
+
+4：element(元素/标签)             exp:p                       选择所有的P标签
+
+5：element,element                 exp:div,p                 选择所有的div元素和p元素
+
+6：element element                 exp:div p                选择div元素内部的所有p元素
+
+7：element>element                exp:div>p               选择父元素为div元素的所有p元素（不包括孙级及以下元素）一个元素是另一个元素的子节点
+
+8：element+element                exp:div+p               选择在div元素之后的所有p元素
+
+9：element~element                exp:p~ul                  选择前面有p元素的每个ul元素
+
+
+
+示例：（在实际使用以上选择方法时，可以结合具体标签来精确定义）
+main article h2,main h1 {
+    color: green;
+}
+...
+
+<main>
+	<article>
+		<h2 name="houdunren">houdunren.com</h2>
+		<aside>
+			<h2>houdunwang.com</h2>
+		</aside>
+	</article>
+	<h2 name="hdcms.com">hdcms.com</h2>
+	<h1>后盾人</h1>
+</main>
+
+
+
+
+
+属性选择器
+1：为具有class属性的h1标签设置样式
+h1[class] {
+    color: red;
+}
+...
+
+<h1 class="container">houdunren.com</h1>
+
+
+2：约束多个属性
+h1[class][id] {
+    color: red;
+}
+...
+
+<h1 class="container" id >houdunren.com</h1>
+
+
+3：具体属性值设置样式
+a[href="https://www.houdunren.com"] {
+    color: green;
+}
+...
+
+<a href="https://www.houdunren.com">后盾人</a>
+<a href="">HDCMS</a>
+
+4：^ 以指定值开头的元素（$ 以指定值结尾的元素/* 属性内部任何位置出现值的元素/~ 属性值中包含指定词汇的元素/| 以指定值开头或以属性连接破折号的元素）
+h2[name^="hdcms"] {
+    color: red;
+}
+...
+
+<h2 name="houdunren">houdunren.com</h2>
+<h2 name="hdcms.com">hdcms.com</h2>
+
+
+
+
+
+
+超链接使用伪类
+exp:
+a:link {//选择所有未被访问的链接
+    color: red
+}
+
+a:visited {//选择所有已被访问的链接
+    color: green
+}
+
+a:hover {//鼠标移动到元素上时
+    color: blue
+}
+
+a:active {//点击正在发生时
+    color: yellow
+}
+...
+
+<a href="https://www.houdunren.com">后盾人</a>
+
+
+以上也适用于input元素，此外，input元素还有一个特殊的伪类：（：focus---选择获得焦点的input元素）
+
+
+2：
+：target(用于控制具有锚点目标元素的样式)
+div {
+	height: 900px;
+}
+
+div:target {
+	color: red;
+}
+...
+
+<a href="#hdcms">hdcms</a>//同界面导航，设置id并使用href实现
+<div></div>
+<div id="hdcms">
+	hdcms内容管理系统
+</div>
+
+
+
+
+3：
+：root(根元素选择伪类即选择html)
+:root {
+    font-size: 100px;
+}
+
+
+4:
+:empty(对没有内容的元素进行选中和设置)
+exp:
+:empty {
+    border: solid 2px red;
+}
+...
+
+<p></p>//该元素会被设置
+<p> </p>//该元素不会被设置
+
+
+
+结构伪类
+<article>
+	<span>houdunren.com</span> ------------A
+	<aside>
+		<span>houdunwang.com</span>--------------------B
+		<span>hdcms.com</span>------------------------C
+	</aside>
+</article>
+1：（:first-child）选中AB
+exp:选择元素中span 标签并且是第一个。
+article span:first-child {
+    color: red;
+}
+
+2:(:first-of-type)选中AB
+exp:选择类型是span 的第一个元素
+article span:first-of-type {
+    color: red;
+}
+
+:first-child与:first-of-type的区别：
+:first-child选中的是指定元素必须是其父级元素的第一个元素，而:first-of-type不会考虑这个，他只会选择指定元素，并且如果该元素是多次重复出现，则会选择第一个
+
+3：（:last-child[选中C]与:last-of-type[选中AC]的用法同上）
+
+4：（:only-child）选择属于其父元素的唯一子元素的每一个元素[在上述实例当中删除C之后B被选中]
+
+5：（:only-of-type）选择属于其父元素唯一的元素的每一个元素[在上述实例当中A被选中]
+
+
+
+
+
+<article>
+	<span>houdunren.com</span> ------------A
+	<aside>
+		<span>houdunwang.com</span>--------------------B
+		<span>hdcms.com</span>------------------------C
+	</aside>
+<span>hdcms.com</span>------------------------D
+</article>
+6：（:nth-child(n)）选择属于其父元素的第n个子元素的每个元素[在上述实例当中D被选中,n=2]
+
+7：（:nth-of-type(n)）选择属于其父元素第n个元素的每个元素[在上述实例当中CD被选中，n=2]
+
+8：隔列变色
+exp:
+table tr>td:nth-child(2n+1) {
+    background: green;
+    color: white;
+}
+
+9:从第三个开始设置样式
+table tr>td:nth-child(n+3) {
+    background: rgb(128, 35, 2);
+    color: white;
+}
+
+
+10:设置前三个元素
+table tr>td:nth-child(-n+3) {
+    background: rgb(128, 35, 2);
+    color: white;
+}
+
+11:选择奇数单元格
+table tr>td:nth-child(odd) {
+    background: green;
+    color: white;
+}
+
+12：选择偶数单元格
+table tr>td:nth-child(even) {
+    background: green;
+    color: white;
+}
+
+
+13:(:nth-last-child(n))从最后一个元素开始获取
+table tr>td:nth-last-child(2n+1){
+    background: green;
+    color: white;
+}
+
+
+14：取最后两个元素
+main>ul li:nth-last-child(-n+2) {
+	color: red;
+}
+
+
+
+15：（:nth-last-of-type(n)）从最后一个元素开始选择span标签
+
+
+16：（:not(selector)）排除第一个li元素
+ul li:not(:nth-child(1)) {
+    background: red;
+}
+...
+
+<ul>
+  <li>houdunren.com</li>
+  <li>hdcms.com</li>
+  <li>后盾人</li>
+</ul>
+
+
+
+
+
+
+
+
+表单伪类
+:enabled		input:enabled		选择每个启用的 input 元素
+:disabled		input:disabled		选择每个禁用的 input 元素
+:checked		input:checked		选择每个被选中的 input 元素
+:required		input:required		包含required属性的元素
+:optional		input:optional		不包含required属性的元素
+:valid		input:valid		验证通过的表单元素
+:invalid		input:invalid		验证不通过的表单
+
+exp:
+input:valid {
+    	border: solid 1px green;
+}
+input:invalid {
+	border: solid 1px red;
+}
+<form>
+<input type="email">
+<button>保存</button>
+</form>
+    
+
+
+
+字符伪类
+::first-letter	p:first-letter	选择每个元素的首字母
+
+::first-line		p:first-line	选择每个元素的首行
+
+::before		p:before		在每个元素的内容之前插入内容
+
+::after		p:after		在每个元素的内容之后插入内容
+
+
+
+
+CSS添加属性内容
+1：
+span::before {
+    content: '⇰';
+    color: red;
+}
+span::after {
+    content: '⟲';//添加图标
+    color: green;
+}
+...
+
+<span>后盾人</span>
+
+
+2：
+div {
+    border: solid 1px #ddd;
+    width: 150px;
+}
+
+div>input[type="text"] {
+    border: none;
+    outline: none;
+}
+
+div>input[type="text"]+span:after {
+    content: "\21AA";//添加字符以显示图标
+    font-size: 14px;
+    cursor: pointer;
+}
+...
+
+<div>
+	<input type="text"><span></span>
+</div>
+
+
+3：
+h2::before {
+	content: attr(title);//添加内容
+}
+...
+
+<h2 title="后盾人">houdunren.com</h2>
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+元素权重
+1：通常情况下，在同一个元素当中同时设置了class和id之后，id的优先级（权限）大于class
+2:相对于块级元素，行级元素的权重优先级最高
+3：使用!important可以强制优先级来解决规则出现冲突的情况
+4：子元素会继承父元素设置的样式，该子元素并不是全部的样式（边框，高度并不会被继承，并且继承的规则没有权重）
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+文本控制
+1：字体设置
+可以设置多种字体，系统会自动依次查找，要注意的是应当使用通用字体，毕竟你使用的字体可能发布出去别人没有该字体
+1.1自定义字体
+exp:
+<style>
+  @font-face {
+  	font-family: "houdunren";
+  	src: url("SourceHanSansSC-Light.otf") format("opentype"),
+  	url("SourceHanSansSC-Heavy.otf") format("opentype");
+  }
+或者：（名字可以自定义，使用的字体要预先下载好）
+@font-face{
+    font-family: 'YaHei Consolas Hybrid';
+	src:url(font/851CHIKARA-DZUYOKU_kanaA_004.ttf);
+}
+
+  span {
+  	font-family: 'houdunren';
+  }
+</style>
+
+字体	格式
+.otf	opentype
+.woff	woff
+.ttf	truetype
+.eot	Embedded-opentype
+
+
+
+
+2：字重定义
+font-weight(取值范围normal | bold | bolder | lighter | 100 ~900，其中normal对应400，700对应bold)
+
+
+3:文本文号
+font-size
+一般使用px，使用百分数时，表示的意思是子元素相对于父元素的大小，比如父元素是20px,子元素设置为200%即为你元素的两倍大小
+此外，em单位等同于百分数单位
+
+
+4：文本颜色
+使用color定义，color的值可以是字符串颜色（green）,也可以是十六进制网页颜色（#fff）,使用RGB颜色（color:rgba(38, 149, 162,.2);最后第四个参数管理的是颜色透明度，区间是0~1，可以不设置）
+
+
+5：行高定义
+line-height(顾名思义，设置的是每一行文本的行距)
+
+
+6：倾斜风格
+font-style:italic/normal
+
+
+注意：以上样式可以组合定义，要注意先后关系
+
+
+
+
+
+文本样式
+1:大小转换
+1.1小号大写字母：font-variant:small-caps
+
+1.2字母大小写转换：(text-transform)
+
+首字母大写：text-transform:capitalize
+全部大写：text-transform:uppercase
+全部小写：text-transform:lowercase
+
+
+2:文本线条（text-decoration）
+
+text-decoration:none(删除文本底端线条)
+text-decoration:underline(添加下划线)
+text-decoration:line-through(删除线)
+text-decoration:overline(添加上划线)
+
+
+
+
+3:阴影控制（text-shadow）
+
+exp:  text-shadow: rgba(13, 6, 89, 0.8) 3px 3px 5px;
+参数顺序为：颜色，水平偏移，垂直偏移，模糊度
+
+
+
+
+4:空白处理（white-space）
+pre	保留文本中的所有空白，类似使用 pre 标签
+nowrap	禁止文本换行
+pre-wrap	保留空白，保留换行符
+pre-line	空白合并，保留换行符
+
+
+
+5:文本溢出处理
+1:overflow-wrap:break-word
+2:溢出添加...,需要将overflow设置在text-overflow前面
+exp:
+h2 {
+  width: 100px;
+  border: solid 1px #ddd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+...
+
+<h2>houdunren.com</h2>
+
+
+
+
+
+
+
+
+段落控制
+1：文本缩进（text-indent）
+exp：
+p {
+	  text-indent: 2em;
+  }
+
+
+2：水平对齐（text-align）
+text-align:left|right|center
+
+
+
+3:设置对应的行高来让段落看起来舒服
+p {
+	text-indent: 2em;//设置文本缩进
+	line-height: 2em;//设置行高
+}
+
+
+
+4：垂直对齐（vertical-align）
+使用 vertical-align 用于定义内容的垂直对齐风格，包括middle | baseline | sub | super 等。
+如果参数是bottom | top，表示的是相对于行框底部或者顶部对齐
+此外还可以使用单位，比如20px等对齐方式
+
+
+
+5：字符间距
+使用word-spacing与letter-spacing控制单词与字答间距
+h2 {
+	word-spacing: 2em;
+	letter-spacing: 3em;
+}
+
+
+
+6：排版方式
+wirting-mode:;
+horizontal-tb	水平方向自上而下的书写方式
+vertical-rl		垂直方向自右而左的书写方式
+vertical-lr		垂直方向内内容从上到下，水平方向从左到右
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+盒子模型
+以内容（content）为中心
+1：内容与边框之间的范围用padding来管理，也可以使用padding-left,padding-top,padding-right,padding-bottom；
+
+2：边框的管理使用的是border，也可以使用border-left,border-top,border-right,border-bottom
+
+3:边框与周围区域的管理使用margin,也可以使用margin-top,margin-left,margin-right,margin-bottom
+
+4:居中设置可以使用margin-left:auto；搭配margin-right:auto来实现
+
+5：设置宽度与高度包括内边距与边框，使用box-sizing:border-box;（及如果该元素设置了该属性之后，它的子节点设置的width和height就会包含它设置的border和padding;（如果该元素溢出到父元素之外，在该元素使用这一个属性可以让该元素回归）
+
+6:边框设计可以使用border-style,可以取的值如下：
+none	定义无边框。
+dotted	定义点状边框。在大多数浏览器中呈现为实线。
+dashed	定义虚线。在大多数浏览器中呈现为实线。
+solid	定义实线。
+double	定义双线。双线的宽度等于 border-width 的值。
+groove	定义 3D 凹槽边框。其效果取决于 border-color 的值。
+ridge	定义 3D 垄状边框。其效果取决于 border-color 的值。
+inset	定义 3D inset 边框。其效果取决于 border-color 的值。
+outset	定义 3D outset 边框。其效果取决于 border-color 的值。
+
+单独设置边框样式：
+border-top-style		顶边
+border-right-style		右边
+border-bottom-style	下边
+border-left-style		左边
+border-style		四边
+
+
+
+6.1：边框宽度设置：
+border-top-width		顶边
+border-right-width		右边
+border-bottom-width	下边
+border-left-width		左边
+border-width                           四边
+
+
+
+6.2：边框颜色设置：
+border-top-color		顶边
+border-right-color		右边
+border-bottom-color	下边
+border-left-color		左边
+border-color		四边
+
+
+
+6.3：圆角边框：（border-radius）
+border-top-left-radius	上左
+border-top-right-radius	上右
+border-bottom-left-radius	下左
+border-bottom-right-radius	下右
+
+定义不同边：border-radius: 10px 30px 50px 100px;
+通过边框绘制圆：border-radius:50%;
+
+行元素绘制圆角：
+em {
+	border-radius: 50%;
+	border-bottom: solid 2px red;
+}
+
+
+
+
+7：轮廓线设置（outline）
+7.1:outline-style: double;(设置线框样式)
+
+7.2：ouline-width：10px(线框设置)
+
+7.3：outline-color:red;(线条颜色)
+
+7.4：组合定义：outline: red solid 2px;
+
+
+7.5：去除表单轮廓线：
+input：focus{
+	outline:none;
+}
+
+
+
+8:控制显示隐藏（display）
+可以使用的参数如下：
+none              	隐藏元素（不保留隐藏后原来内容的空间）
+block             	显示为行元素（行转块元素）
+inline             	显示为行元素，不能设置宽/高（块转为行元素）
+inline-block              行级块元素，允许设置宽/高（行级块使用）
+
+
+
+
+9：visibility: hidden;（控制元素的显示隐藏，在隐藏后空间位也保留）
+
+
+10：溢出控制(overflow)
+可以使用的参数如下：
+hidden		溢出内容隐藏
+scroll		显示滚动条（有些浏览器会一直显示，有些在滚动时显示）
+auto		根据内容自动处理滚动条
+
+
+
+10.1：单行文本溢出：
+div {
+  width: 400px;
+  height: 100px;
+  border: solid 2px #ddd;
+  padding: 20px;
+  overflow: hidden;//隐藏溢出内容
+  text-overflow: ellipsis;
+  white-space: nowrap;//禁止文本换行
+}
+
+
+10.2多行文本溢出控制
+div {
+  width: 200px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+
+
+
+
+
+
+
+11：尺寸定义
+width		宽度
+height		高度
+min-width	最小宽度
+min-height	最小高度
+max-width	最大宽度
+max-height	最大高度
+
+
+fill-available	撑满可用的空间
+exp:span {
+            background: #e67e22;
+            display: inline-block;
+            width: -webkit-fill-available;
+            height: -webkit-fill-available;
+        }
+
+fit-content	根据内容适应尺寸
+exp:h2 {
+            text-align: center;
+            background: #f1c40f;
+            width: fit-content;
+            margin: auto;
+        }
+
+
+
+min-content （max-content）            将容器尺寸按最小(大)元素宽度设置
+ main {
+            width: min-content;
+            margin: auto;
+        }
+最大最小建议在已经定义了确定长度宽度的前提内部下面使用，建议使用百分比
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+背景样式
+
+1：背景颜色(background-color/也可以background)
+
+2 : 背景图片（background-image: url(icon-s.jpg);）
+
+3：背景裁剪（background-clip）,有三个可选参数如下：
+border-box------------------包括边框
+padding-box----------------不包含边框，包含内边距
+content-box-----------------内容区域
+
+4：背景重复（background-repeat）,有五个可选参数如下：
+repeat-------------------水平，垂直重复
+repeat-x -------------------水平重复
+repeat-y -------------------垂直重复
+no-repeat-------------------不重复
+space-------------------背景图片对称均匀分布
+
+
+
+5：背景滚动（background-attachment）,有两个可选参数如下：
+scroll----------------背景滚动
+fixed----------------背景固定
+
+
+
+6：背景位置（background-position）,有五个可选参数如下：
+left---------------------左对齐
+right---------------------右对齐
+center---------------------居中对齐
+top---------------------顶端对齐
+bottom---------------------底端对齐
+
+
+
+7：背景尺寸（background-size）有两个可选参数如下：
+cover-------------------背景完全覆盖，可能会有背景溢出
+contain-----------------图片不溢出，但是会漏出部分空白区域
+
+
+
+
+8：多个背景：
+8.1后定义的背景置于底层
+background-image: url(xj-small.png), url(bg.png);
+
+
+8.2多属性定义
+background-image: url(xj-small.png), url(bg.png);
+background-repeat: no-repeat;
+background-position: top left, right bottom;
+
+
+
+8.3可以一次定义多个背景图片：
+background: url(xj-small.png) left 50% no-repeat,
+                url(bg.png) right 100% no-repeat red;
+
+
+
+9：盒子阴影（box-shadow）
+exp:box-shadow:10px 10px 5px rgba(100,100,100,0.5);
+参数对应的含义分别为：水平偏移，垂直偏移，模糊度，颜色
+
+box-shadow: 23px 0 0 currentColor, 53px 0 0 currentColor, 83px 0 0 currentColor;
+/*，某一个元素的阴影可以分离复制出多个，其中currentColor的意思是继承它主体的颜色*/
+
+
+
+10：颜色渐变：
+10.1线性渐变
+10.1.1渐变一般用在背景颜色中使用
+background:linear-gradietnt(red,green);
+
+10.1.2渐变角度
+background:linear-gradient(30deg,red,green);
+
+10.1.3向右(左)渐变
+background:linear-gradient(to right（left）,red,green);
+
+10.1.4向左上（右下渐变）
+background:linear-gradient(to top left(right bottom)，red,green);
+
+10.1.5设置多个颜色
+background: linear-gradient(red, rgb(0, 0, 200), green, rgba(122, 211, 100, 0));
+
+
+
+
+10.2径向渐变
+10.2.1设置渐变
+background:radial-gradient(red,blue,green);
+
+10.2.2设置渐变宽度与高度
+background:radial-gradient(100px 200px, red,blue,green);
+
+左下渐变
+
+background: radial-gradient(at bottom left, red, blue);
+
+右下渐变
+
+background: radial-gradient(at bottom right, red, blue);
+
+左侧向中心渐变
+
+background: radial-gradient(at center left, red, blue);
+
+底部向中心渐变
+
+background: radial-gradient(at 50% 100%, red, blue);
+
+
+
+
+
+10.3：标识位
+颜色未指定标识时，颜色会平均分布。
+红色与蓝色在50%gc 60%间发生激变.
+
+background: linear-gradient(45deg, red 50%, blue 0%);
+
+标识位相同时将没有过渡效果
+
+background: linear-gradient(45deg, red 0,red 50%, blue 50%);
+
+
+实例：
+1：绘制小太阳
+width: 150px;
+height: 150px;
+background: radial-gradient(red 0, yellow 30%, black 60%, black 100%);
+
+
+2：下例定义从0到25为蓝色,25px到50px的红色，并进行重复后产生渐变的进度条。
+background: repeating-linear-gradient(90deg, blue, 25px, yellow 25px, 25px, red 50px);
+
+
+
+
+3：光圈
+width: 200px;
+height: 200px;
+background: repeating-radial-gradient(100px 100px, red 0%, yellow 40%, black 60%, black 200%);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+数据样式
+1：表格
+1.1表格标题：caption-side(值可为top|bottom)
+
+1.2内容对齐
+水平对齐：text-align:center
+垂直对齐：vertical-align(top顶对齐|middle垂直居中|bottom底部对齐)
+
+
+1.3边框间距
+exp:border-spacing:50px 10px;(设置间距上下10px,左右50px)
+
+
+1.4边框合并
+border-collapse:collapse
+
+1.5隐藏单元格
+empty-cells:hide;
+
+
+1.6无边框表格
+border:none;
+
+
+
+
+2:列表
+2.1使用list-style-type来设置列表样式，规则是继承的，所以在ul标签上设置即可，可以选择的值如下：
+none				无标记。
+disc				默认。标记是实心圆。
+circle				标记是空心圆。
+square				标记是实心方块。
+decimal				标记是数字。
+decimal-leading-zero		0开头的数字标记。(01, 02, 03, 等。)
+lower-roman			小写罗马数字(i, ii, iii, iv, v, 等。)
+upper-roman			大写罗马数字(I, II, III, IV, V, 等。)
+lower-alpha			小写英文字母The marker is lower-alpha (a, b, c, d, e, 等。)
+upper-alpha			大写英文字母The marker is upper-alpha (A, B, C, D, E, 等。)
+lower-greek			小写希腊字母(alpha, beta, gamma, 等。)
+lower-latin			小写拉丁字母(a, b, c, d, e, 等。)
+upper-latin			大写拉丁字母(A, B, C, D, E, 等。)
+hebrew				传统的希伯来编号方式
+armenian				传统的亚美尼亚编号方式
+georgian				传统的乔治亚编号方式(an, ban, gan, 等。)
+cjk-ideographic			简单的表意数字
+hiragana				标记是：a, i, u, e, o, ka, ki, 等。（日文片假名）
+katakana				标记是：A, I, U, E, O, KA, KI, 等。（日文片假名）
+hiragana-iroha			标记是：i, ro, ha, ni, ho, he, to, 等。（日文片假名）
+katakana-iroha			标记是：I, RO, HA, NI, HO, HE, TO, 等。（日文片假名）
+
+当然也可以自定义样式：
+exp:
+ul li {
+  /* list-style-image: url(xj-small.png);//自定义图片为列表样式
+  list-style-image: radial-gradient(10px 10px, red, black); */
+  
+  list-style-image: linear-gradient(45deg, red, black);//多色渐变
+}
+
+
+
+
+2.2符号位置
+list-style-position:inside（outside）控制符号显示在内容外部还是内部
+
+
+当然以上两个样式可以统一定义：list-style:circle inside;
+
+
+
+ul li {
+  background: url(xj-small.png) no-repeat 0 6px;
+  background-size: 10px 10px;
+  list-style-position: inside;
+  list-style: none;
+  text-indent: 15px;
+}
+
+
+
+<style>
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            background-image: url(xj-small.png), url(houdunren.jpg);
+            background-repeat: no-repeat, repeat;
+            background-size: 10px 10px, 100%;
+            background-position: 5px 7px, 0 0;
+            text-indent: 20px;
+            border-bottom: solid 1px #ddd;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+
+        }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+3:追加内容
+使用伪类::before向前添加内容，使用::after向后面添加内容
+a::after {
+  content: " (坚持努力) ";
+}
+
+
+3.1提取属性
+<style>
+  a::after {
+    content: attr(href);
+  }
+</style>
+
+<a href="houdunren.com">后盾人</a>
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+浮动布局
+
+1:float（可选参数：left | right | none）
+在网站开发过程中需要一行排列多个元素，使用浮动可以方便实现
+通常对每一个元素都设置浮动之后，元素会根据先后关系来依次排列；
+
+
+元素在设置了浮动之后就会变成块元素，如span，所以浮动之后的元素可以设置宽高（width,heigth）
+
+
+清除浮动
+clear,可选参数如下：
+
+left	左边远离浮动元素
+right	右连远离浮动元素
+both	左右都远离浮动元素
+
+
+after
+使用::after伪类为父元素添加后标签，实现清除浮动影响
+.clearfix::after{
+content:"";
+display:block;
+clear:both;
+}
+
+
+
+
+overflow（hidden | auto）
+子元素使用浮动后不占用空间，这时父元素高度将为0，通过添加父元素并设置overflow属性可以清除浮动；
+
+
+
+
+2:形状浮动（shape-outside），可选参数如下：
+margin-box	外边距环绕
+padding-box	内边距环绕
+border-box	边线环绕
+content-box	内容环绕
+
+
+
+显示区域设置（clip-path）,可选参数如下：
+circle	圆形
+ellipse	椭圆
+polygon	多边形
+
+exp:
+
+clip-path: circle(50% at center);
+
+
+clip-path: ellipse(50% 80% at 100% 0);
+
+clip-path: polygon(50% 0, 100% 100%, 0 100%)
+
+
+
+环绕模式：
+
+1： shape-outside: circle(50%) padding-box;
+
+2： shape-outside: ellipse(80px 70px) padding-box;
+
+3： shape-outside: url(xj.png);
+
+4：clip-path: polygon(50px 0px, 0 100px, 100px 100px);
+    shape-outside: polygon(50px 0px, 0 100px, 100px 100px);
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+定位布局
+使用position,有五个可选参数：
+static	默认形为，参考文档流
+
+
+relative	相对定位
+相对定位是相对于元素原来的位置控制，当元素发生位置偏移时，原位置留白
+
+
+absolute	绝对定位
+绝对定位不受文档流影响，就像漂浮在页面中的精灵，绝对定位元素拥有行内块特性；
+要注意的是：如果父级元素设置了relative | fixed |  sticky,绝对定位子元素将参照父元素进行定位
+如果没有为定位元素设置偏移，将受父元素padding等属性影响
+
+
+fixed	固定定位
+设置该属性之后，元素相对于页面固定定位在某一个位置，固定定位元素不会在滚动时改变位置；
+
+
+sticky	粘性定位
+对原来的元素进行覆盖
+
+
+居中定位设置：
+position:absolute;
+left:50%;
+top:50%;
+
+
+
+纵向重叠
+如果元素重叠在一起，可以使用z-index控制元素的上下层级，数值越大越在上面；
+
+要注意的是父级子元素设置z-index没有意义，因为子元素永远在父元素的上面，因此z-index应当在同级元素中设置
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+弹性布局
+Flex 的意思是--“弹性布局”,可以轻松控制元素排列，对齐，顺序的控制
+使用弹性盒模型可以让元素在不同的尺寸终端控制尺寸
+
+1：声明：
+display:flex/*随屏幕伸缩*/声明为块级（在哪个元素里面声明，该元素就变成了一个弹性盒子）
+display:inline-flex/*固定了里面元素宽度，不会随着屏幕尺寸改变而改变*/声明为内联级
+
+2：控制盒子元素排列的方向（flex-direction）
+row			从左到右水平排列元素（默认值）
+row-reverse		从右向左排列元素
+column			从上到下垂直排列元素
+column-reverse		从下到上垂直排列元素
+
+
+3:控制当页面变化时元素的排列（flex-wrap）
+nowrap		元素不拆行或不拆列（默认值）
+wrap		容器元素在必要的时候拆行或拆列。
+wrap-reverse	容器元素在必要的时候拆行或拆列，但是以相反的顺序
+
+
+
+4:flex-flow是以上两种设置方法的组合简写：
+exp:flex-flow: row-reverse wrap-reverse;
+
+4.1水平排列
+flex-flow:row wrap
+
+flex-flow:row-reverse wrap-reverse
+
+4.2垂直排列
+flex-flow:column wrap
+
+
+5:控制元素在主轴的排列方式（原生屏幕）（justify-content）注意，它控制的是主轴！（取决于flex-flow的值）
+flex-start----元素紧靠主轴起点
+flex-end-----元素紧靠主轴终点
+center------ 元素从弹性容器中心开始
+space-between----第一个元素靠起点，最后一个元素靠终点，余下元素平均分配空间
+space-around-----每个元素两侧的空隔相等，此时项目之间的间隔比项目与边框的间隔大一倍
+space-evenly------元素之间距离平均分配
+
+
+
+
+6：控制容器元素（所有）在交叉轴的排列方式（align-items）注意：它控制的是交叉轴！
+stretch	元素被拉伸以适应容器（默认值）
+center	元素位于容器的中心
+flex-start	元素位于容器的交叉轴开头（首部）
+flex-end	元素位于容器的交叉轴结尾（底端)
+
+
+注意：如果设置了 width | height | min-height | min-width | max-width | max-height ，将影响stretch 的结果，因为 stretch 优先级你于宽高设置。
+
+
+
+对元素进行居中：flex-flow:row;justfy-content:center;align-items:center;
+
+
+
+7：align-content
+只适用于多行显示的弹性容器，它的作用是当flex容器在交叉轴上有多余空间时，对元素对齐处理
+stretch		将空间平均分配给元素
+flex-start		元素紧靠主轴起点
+flex-end		元素紧靠主轴终点
+center		元素从弹性容器中心开始
+space-between	第一个元素靠起点，最后一个元素靠终点，余下元素平均分配空间
+space-around	每个元素两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍
+space-evenly	元素间距离平均分配
+
+
+
+
+
+
+8：弹性元素（文本也是弹性元素，也可以使用弹性布局）
+定义：放在容器盒子中的元素即为容器元素
+1：不能使用float与clear规则
+2：弹性元素均为块元素（可设置宽高）
+3：绝对定位的弹性元素不参与弹性布局
+
+
+
+
+9：align-self
+用于控制单个元素在交叉轴上的排列方式
+stretch	将空间平均分配给元素
+flex-start	元素紧靠主轴起点
+flex-end	元素紧靠主轴终点
+center	元素从弹性容器中心开始
+
+
+
+10：flex-grow
+用于将弹性盒子的可用空间分配给弹性元素，值可以为整数或者小数(注意这里的可用空间是指没有被占用的空间，而且它正对的是一个具体的元素)
+exp:
+article div:nth-of-type(1) {
+    width: 100px;
+    flex-grow: 1;
+  }
+  article div:nth-of-type(2) {
+    width: 100px;
+    flex-grow: 3;
+  }
+  article div:nth-of-type(3) {
+    width: 300px;
+    flex-grow: 6;
+  }
+
+下例中为三个DIV 弹性元素设置了1、3、6 ，即宽度分成10等份，第三个元素所占宽度为(宽度/(1+3+6)) X 6。
+
+
+注意：如果我们对于一个已经设定了弹性区域设置flex-grow:1;那么这一个弹性区域会自动把里面的空间全部撑满；
+11:flex-shrink
+与flex-grow相反，该方法是在弹性盒子装不下元素时定义的缩小值
+
+下例在600宽的弹性盒子中放了 1000 宽的弹性元素。并为最后两个元素设置了缩放，最后一个元素的缩放比例为 500 -( ( (1000-600) / (100X1+400x3+500X6) ) x 3 ) X 500 = 220.9，计算公式说明如下：
+
+缩小比例 = 不足的空间 / (元素 1 宽度 x 缩小比例) + (元素 2 宽度 x 缩小比例) ...
+最终尺寸 = 元素三宽度 - (缩小比例 x  元素 3 的宽度) X 元素
+
+exp:
+article div:nth-child(1) {
+        flex-shrink: 0;
+    }
+    article div:nth-child(2) {
+        flex-shrink: 1;
+    }
+    article div:nth-child(3) {
+        flex-shrink: 3;
+    }
+
+
+
+
+12:flex-basis(定义基础尺寸)
+flex-basis 属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。
+
+
+
+注意：flex是flex-grow、flex-shrink 、flex-basis缩写组合。
+
+建议使用 flex 而不要单独使用 flex-grow / flew-shrink / flex-basis 。
+exp: flex: 1 0 100px;
+
+
+
+
+13:order
+用于控制弹性元素的位置，默认值为0，数值越小越在前面，可以为负数或整数
+例如有四个div元素都是按照html既定顺序排列，通过使用对每个div区域设置order数值就可以改变它们的上下排列顺序！
+
+文本节点（span等）也在弹性布局操作范围内，绝对定位的弹性元素不参与弹性布局
+
+
+
+
+14：自动空间
+在弹性布局中对元素使用margin-right:auto 等形式可以自动撑满空间。
+下例为第一个ul设置 margin-right:auto 表示右侧空间自动撑满，第二个ul靠近父元素右边界。
+
+
+
+
+弹性布局里面的的每一个元素既可以是弹性元素，也可以是弹性容器！
+
+
+注意：
+要找到真正的爸爸（直接父元素），即使用弹性布局的对象，必须要包含所有需要操控的元素
+exp:
+正确示范：
+section {
+            display: flex;
+        }
+<body>
+    <main>
+        <section>
+            <div><img src="../炫酷特效源码/image/v2-06035b75b25f0d19d7b8efa04c6dec07_r.jpg" alt=""></div>
+            <div><img src="../炫酷特效源码/image/v2-11246fc02f37570e7f26154ea9082847_r.jpg" alt=""></div>
+            <div><img src="../炫酷特效源码/image/v2-a0620b47fcea13878cce382659529959_r.jpg" alt=""></div>
+            <div><img src="../炫酷特效源码/image/v2-fefde43aecf0174852a075f56cb3c9ea_r.jpg" alt=""></div>
+        </section>
+    </main>
+
+</body>
+
+错误示范：（不起任何作用）
+div {
+            display: flex;
+        }
+<body>
+    <main>
+        <section>
+            <div><img src="../炫酷特效源码/image/v2-06035b75b25f0d19d7b8efa04c6dec07_r.jpg" alt=""></div>
+            <div><img src="../炫酷特效源码/image/v2-11246fc02f37570e7f26154ea9082847_r.jpg" alt=""></div>
+            <div><img src="../炫酷特效源码/image/v2-a0620b47fcea13878cce382659529959_r.jpg" alt=""></div>
+            <div><img src="../炫酷特效源码/image/v2-fefde43aecf0174852a075f56cb3c9ea_r.jpg" alt=""></div>
+        </section>
+    </main>
+
+</body>
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+栅格布局（更加注重于对于整体的布局，而对于元素关心较少）
+CSS网格布局是CSS中最强大的布局系统，这是一个二维系统，它可以同时处理列和行
+栅格系统与FLEX弹性布局相似，都是由父容器包含多个项目元素的使用
+
+1：块级容器声明
+display:grid;
+
+2:行级容器声明(少用)
+display:inline-grid;
+
+3:划分行列
+与表格（table）类似；
+grid-template-rows------划分行
+grid-template-columns----划分列
+exp:(划分为两行四列)
+grid-template-rows: 50% 50%;（画表格的第一种方法）
+grid-template-columns: 25% 25% 25% 25%;
+
+
+只是划分了一个定义好了的容器，对定义了栅格布局元素里面的元素智能填充
+可以使用百分比，也可以使用px等，使用百分比将会相对于父级元素的大小进行按比例划分
+
+
+4：重复设置
+以上设置也可以使用repeat统一设置值,第一个参数为重复数量，第二个参数为重复值
+exp:
+原：grid-template-rows: 50% 50%;
+       grid-template-columns: 25% 25% 25% 25%;
+
+后：grid-template-rows:repeat(2,50%);
+       grid-template-columns:repeat(4,25%);
+
+
+
+5:自动填充（根据容器尺寸，自动填充）
+grid-template-rows: repeat(auto-fill, 100px);（画表格的第二种方法）
+grid-template-columns: repeat(auto-fill, 100px);
+
+
+
+6：比例划分（使用fr单位按份划分）
+exp:
+grid-template-rows:1fr 2fr;/*划分为两行，按照1：2来划分*/（画表格的第三种方法）
+grid-template-columns:100px 1fr 2fr;/*划分为三列*/
+
+
+重复定义：
+grid-template-rows:repeat(2,1fr);/*1fr 1fr*/
+grid-template-columns:repeat(2,1fr 2fr)/*相当于1fr 2fr 1fr 2fr*/
+
+
+对于行和列的定义可以组合定义（用‘ / ’来划分）
+grid-template: 100px 1fr / 50px 1fr
+
+
+
+7：minmax
+使用该方法可以设置取值范围（不会随着页面的增大减小而无限增大或者减小）
+exp:
+grid-template-rows:100px minmax(100px,1fr);/*第二行的行高在最小100px~最大1fr间取值*/
+
+
+8：row-gap(column-gap)
+使用该方法可以设置行间距(列间距)
+exp:
+grid-template-rows:repeat(2 1fr);
+grid-template-columns:repeat(3,1fr);
+row-gap:30px;
+
+
+组合定义
+使用gap可以一次定义行，列间距，如果间距一样可以设置一个值，使用了该方法就会自动对行列间距进行管理
+gap: 20px 10px;/*行间距为20px , 列间距为10px*/
+
+gap:20px;/*行列间距都是20px*/
+
+
+
+
+栅格布局设置了行列宽度之后，可以直接使用边线默认编号（1，2，3 . . .）来作为名字来进行调用；
+9:独立命名
+为每个栅格独立命名来进行调用
+9.1步骤一：在行列划分宽度区域命名
+exp:
+ display: grid;
+        grid-template-rows: [r1-start] 100px [r1-end r2-start] 100px [r2-end r3-start] 100px [r3-end];
+
+        grid-template-columns: [c1-start] 100px [c1-end c2-start] 100px [c2-start c3-start] 100px [c3-end];
+
+
+步骤二：调用，并为该元素设置位置（r2-start和r1-end重叠选择两者均可）
+	grid-row-start: r1-end;
+        	grid-row-end: r2-start;
+        	grid-column-start: c1-end;
+        	grid-column-end: c2-start;
+
+
+
+9.2自动命名
+对于重复设置的栅格系统会自动命名，使用时使用c1,c2的方式定位栅格
+步骤一：在行列划分宽度区域命名
+grid-template-rows: repeat(3, [r-start] 100px [r-end]);
+grid-template-columns: repeat(3, [c-start] 100px [c-end]);
+
+步骤二：调用，并为该元素设置位置
+grid-row-start: r-start 2;（从编号为2的行开始）
+grid-column-start: c-start 2;
+grid-row-end: r-start 2;
+grid-column-end: c-end 2;
+
+
+
+
+10：元素定位
+grid-row-start		行开始栅格线
+grid-row-end		行结束栅格线
+grid-column-start		列开始栅格线
+gird-column-end		列结束栅格线
+
+
+
+注意：弹性盒模型和栅格系统可以结合使用
+
+
+11：根据偏移量定位（也就是该元素占多少个位置，以默认位置作为起始）
+div:first-child {
+        grid-row-start: 2;
+        grid-column-start: 2;
+        grid-row-end: span 1;（编号加1）
+        grid-column-end: span 1;
+    }
+
+或者（简写）：
+div:nth-child(2){
+    grid-row:1/span 2;
+    gird-column:2/span 2;
+}
+如果知道该元素的默认边线，那么可以直接span即可；
+
+
+12：gird-area
+这是对上面四个定位元素的组合
+语法结构：grid-row-start/grid-column-start/grid-row-end/grid-column-end。
+exp:
+grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+
+grid-area: 2/2/3/3;
+
+
+
+12.2对每一个区域（单元格）进行命名
+exp:
+        grid-template-rows: 80px 1fr 50px;(1fr表示自动填充)
+        grid-template-columns: 100px 1fr 50px 60px;
+        grid-template-areas: "header header header header"
+            		          "nav main main aside"
+                                           "footer footer footer footer";
+
+header {
+        background: #2EC56C;
+        grid-area: header;（把所有名字为header的单元格全部占满）
+    }
+
+    nav {
+        background: #E1732C;
+        grid-area: nav;
+    }
+
+    aside {
+        grid-area: aside;
+        background: #EEBC31;
+    }
+
+    footer {
+        grid-area: footer;
+        background: #904FA9;
+    }
+
+
+
+
+
+
+
+
+
+
+
+13:栅格对齐（参数参照弹性布局）（元素和容器是相对的）
+
+可用参数：
+start | end | center | stretch | space-between | space-evenly | space-around
+
+
+
+align-items		栅格内所有元素的垂直排列方式
+
+justify-items		栅格内所有元素的横向排列方式
+
+justify-content		容器有额外空间时，所有栅格在容器中的水平对齐方式
+
+align-content		容器有额外空间时，所有栅格在容器中垂直对齐方式
+
+以下两种控制单个元素的对齐：
+
+align-self			元素在栅格中垂直对齐方式
+
+justify-self		元素在栅格中水平对齐方式
+
+
+
+
+
+
+对代码尤其是关键代码的注释非常重要
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+变形动画（可以以X-Y-Z 3维坐标轴为平台,Z轴是与屏幕垂直）
+1：让某元素左右或者上下移动，就可以设置该元素：
+transform:translateX(100px);/*左右移动，正负符号控制方位*/
+transform:translateY(100px);/*上下移动，正负符号控制方位*/
+
+2：让元素斜方向移动：
+transform:translateX(100px) translateY(100px);
+或者简写：
+transform:translate(100px,100px);
+
+
+3：可以在该元素的父元素那设置该元素移动变换的时间：
+transition:2s;
+
+
+4:transform方法让元素居中：
+main{
+   position:absolute;
+   left:50%;
+   top:50%;
+   transform:translate(-50%,-50%);
+   width:300px;
+   height:300px;
+    }
+使用该方法的一个特点就是无论width和height怎么变化，元素都是居中对齐的
+
+
+
+5：沿Z轴（穿透屏幕）方向移动的方法
+1：设置两元素在屏幕沿Z轴的位置
+div:nth-child(1) {
+            background: #2ecc71;
+            transform: perspective(900px) rotateY(65deg);
+            /*让元素朝Z轴倾斜*/
+        }
+
+        /* rotateY控制元素沿Y轴放置（垂直），rotateX控制元素沿X轴放置（水平），里面的值对应的是倾斜的值 */
+        /* 要让元素在Z轴移动，就必须要先设置透视（perspective）,和rotateX/Y,两者必须搭配使用来让元素垂直屏幕放置 */
+        /* 接着设置要移动的元素translateZ(200px) ,里面的值控制移动的长度*/
+        div:nth-child(2) {
+            background: #e67e22;
+            transform: perspective(900px) rotateY(65deg);
+            /*让元素朝Z轴倾斜*/
+        }
+
+
+2：设置要移动的元素的移动规则
+        main:hover div:nth-child(2) {
+            transform: perspective(900px) rotateY(65deg) translateZ(200px);
+        }
+
+
+可以很容易的想象出这就是相当于整个三维坐标轴首先沿着屏幕往Z轴倾斜了一定角度
+坐标轴倾斜之后元素沿XY轴移动：
+ main:hover div:nth-child(2) {
+            transform: perspective(900px) rotateY(65deg) translate(200px，200px);/*也可以使用百分数*/
+        }
+
+
+3：translate3d方法使用(这是同时对三个轴进行统一控制，是translateX/Y/Z是平行关系，对于某一个轴不设置的话值就为0)
+ main:hover div:nth-child(2) {
+            transform: perspective(900px) rotateY(65deg) translate3d(200px,200px,200px);
+        }
+
+
+
+6:缩放
+缩放我们使用scale,例如沿X轴缩放（即拉伸）：
+ main:hover div:nth-child(2) {
+            transform: scaleX（2);/*数值为1表示没有变化，数值大于1为拉伸，小于1为缩小*/
+        }
+
+6.2：同时控制X,Y轴的缩放：
+scale(2 , .5);
+
+6.3:控制Z轴缩放：
+scaleZ( .5)/*注意在使用Z轴时一定要在父级元素和自身设置透视（perspective）才可以观察出效果*/
+
+6.3：同时控制三个轴的拉伸：
+scale3d( 2, 2, 6);
+
+
+6.4使用该特性可以用来隐藏显示指定元素
+transform:scale(0);/*隐藏*/
+transform:scale(1);/*显示*/
+
+使用这一特性的好处就是可以设置transition,用来控制要显示的时间；
+transition:2s;
+
+当然为了元素显示的更加好看，我们还要修改元素缩放的基准点：
+transform-origin:left top;/*从左上角开始缩放显示*/
+
+
+
+
+7：旋转
+rotateX(45deg)/*按照X轴旋转，正号就是以X轴为轴心，元素往你的前面旋转，负数就是往你的后面旋转*/
+当然，为了更好的可视化显示，需要搭配透视效果（perspective(900px)）来实现效果，还要使用transition:2s来实现过渡（要让哪一个元素过渡就给那一个元素添加transition,尽量不要添加到它的父元素，也不要添加到该元素hover之后，否则有可能会导致过渡效果失效）
+
+
+rotate3d(1, 0, 0, 195deg);/*分别对应x轴, y轴, z轴以及旋转变换的角度*/
+rotate(angle)		定义 2D 旋转，在参数中规定角度。
+rotate3d(x,y,z,angle)	定义 3D 旋转。
+rotateX(angle)		定义沿着 X 轴的 3D 旋转。
+rotateY(angle)		定义沿着 Y 轴的 3D 旋转。
+rotateZ(angle)		定义沿着 Z 轴的 3D 旋转。
+
+
+8：倾斜
+main:hover div:nth-child(2){
+   transform:skew(-45deg,45deg);/*同时控制元素在X轴，Y轴的倾斜*/
+}
+对于只对X轴进行倾斜，可以直接设置skew(45deg);
+如果要单独对Y轴进行倾斜，应当设置为skew(0,45deg);
+
+skew(x-angle,y-angle)	定义沿着 X 和 Y 轴的 2D 倾斜转换。
+skewX(angle)		定义沿着 X 轴的 2D 倾斜转换。
+skewY(angle)		定义沿着 Y 轴的 2D 倾斜转换。
+
+
+
+
+9:参考点设置（元素旋转的基准点）
+只需要设置指定元素为：
+transform-origin:right bottom;/*方向可以任意指定，也可以使用数值来操作控制*/
+
+
+三维参考点的设置：
+transform-origin:left bottom 300px;(Z轴不可以使用百分比)
+
+
+
+
+10：透视
+perspective
+要注意的两点是:
+1:该属性的值越大，就可以想象成对该物体（山）离的越远，那么选定元素就可以看的全面，数值越小，看的越小，选定的元素也就越大
+2：需要配合旋转（rotate）来使用；
+
+10.2（建议使用）
+main:{
+   display:flex;
+transform:perspective(600px) rotateY(45deg);/*对于自身及其子元素都会同时设置*/
+   }
+
+10.3（不建议使用）
+main:{
+
+    perspective:600px;/*只作用于子元素*/
+
+}
+
+
+
+11：三维空间
+在使用透视之后，如果想要观察立体观察两个元素，可以使用transform-style:preserve-3d;
+这样就可以达到在该元素及其子元素都设置了透视倾斜了之后可以看到两个元素
+
+只要有Z轴参与，就可以使用这一个属性！
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+过渡延迟
+这一CSS属性我们使用transition来实现，适用于同一个元素它的特征（颜色，大小等）有一个变化，我们就可以使用该属性来让特征之间的变换慢一点，可以看到一个过渡过程
+
+1：设置变化的特征
+一般我们都是直接使用transition来实现过渡延迟，但是如果我们只需要控制一个特征，比如颜色实现延迟过渡；使用transition-property:background;
+该属性的默认值为all,指全部变化，也可以禁用过渡延迟,即transition-property:none;
+接着再使用transition-duration:2s即可；
+
+
+2：有些时候我们可以不用直接在html代码当中直接添加类（class）,而是在css中设置某一个标签有一个类,也即是假定有该类（exp:div.test），接着使用JS监听该属性并添加该类做相关操作
+
+
+3：在使用绝对定位（position:absolute;的时候，该元素有可能会无法查看，这时在它的父元素设置相对定位即可（position:relative;））
+
+
+4:分别设置某一个属性的每一个特征的过渡效果：
+transition-property:background,width,height;
+transition-duration:200ms ,1s, 3s; 
+
+
+5:设置元素在过渡变化的过程中的速度（先快后慢，先慢后快等）
+transition-timing-function:liner;
+linear			规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。
+ease			开始慢，然后快，慢下来，结束时非常慢（cubic-bezier(0.25,0.1,0.25,1)）
+ease-in			开始慢，结束快（等于 cubic-bezier(0.42,0,1,1)）
+ease-out			开始快，结束慢（等于 cubic-bezier(0,0,0.58,1)）
+ease-in-out		中间快，两边慢（等于 cubic-bezier(0.42,0,0.58,1)）
+cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中定义自己的值
+
+
+
+
+
+
+
+
+
+6:步进速度
+transition-duration:2s;
+transitin-timing-function:steps(60,start);/*分六十步走完*/
+steps(n,start)			设置n个时间点，第一时间点变化状态
+steps(n,end)			设置n个时间点，第一时间点初始状态
+step-start				等于steps(1,start)，可以理解为从下一步开始
+step-end				等于steps(1,end)，可以理解为从当前
+
+
+
+7：控制定点(定时)显示
+transition-delay:1s;(设置元素为hover之后，鼠标移动到元素区域内1s后才会触发)
+可以同时设置多个值
+exp:
+transition-property:border-radius,background,width,height;
+transition-delay:0ms, 2s, 4s, 4s;
+
+
+
+8：一条规则设置所有属性
+transition:border-radius liner 2s 0s,
+                background 2s 2s,
+                width   liner 2s 4s,
+	height liner  2s 4s;(选定属性  线性 动作延迟时间  等待多少秒之后开始动作)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+帧动画
+1：基础使用
+1.1要在哪一个元素上使用帧动画，就在该元素上写：
+animation-name:'name';/*这里的名字可以是一个或者多个*/
+animation-duration:'second';
+1.2接着打上关键帧：
+@keyframes 'name'{/*0%以及100%可以不用写，默认属性为关键帧之前的属性*/
+   25%{}
+   50%{}
+   75%{}
+ }
+1.3对一些关键帧可以同时统一设置样式：
+25%，50%{}
+1.4简洁模式
+@keyframes hd {
+        from {
+            opacity: 0;
+            transform: scale(.1);
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+
+from 表示起始点
+to表示终点
+
+
+
+
+
+2：多个属性设置动画
+animation-name:'name1'，'name2';
+animation-duration:'second1','second2';
+一个关键帧对应一个设置好的属性名称，帧动画名称数量大于帧动画时间设置量，那么时间将会循环使用；
+
+
+3：使用帧动画的条件，元素的变化有一个中间值；
+
+
+4：帧动画循环显示：
+animation-iteration-count:100;/*该属性默认为1，可以同时设置多个值*/
+当设置值为infinite时，就表示该属性动画无限执行！
+
+
+5：控制动画来回时间的快慢：
+animation-direction:normal/*来的时候按照时间慢慢来，会的时候快*/
+animation-direction:reserve/*先回的时候慢，接着来的时候快*/
+animation-diretion:alternate/*来回都是按照指定时间慢慢进行*/
+animation-diretion:alternate-reverse/*100%-0%-100%*/
+
+
+
+6:控制帧动画等待多少时间之后再开始动画：
+animation-delay:2s;
+
+
+7:控制速率变化效果
+
+animation-timing-function:ease;
+linear			规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。
+ease			开始慢，然后快，慢下来，结束时非常慢（cubic-bezier(0.25,0.1,0.25,1)）
+ease-in			开始慢，结束快（等于 cubic-bezier(0.42,0,1,1)）
+ease-out			开始快，结束慢（等于 cubic-bezier(0,0,0.58,1)）
+ease-in-out		中间快，两边慢（等于 cubic-bezier(0.42,0,0.58,1)）
+cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中定义自己的值
+
+
+
+
+8：步进速度（让元素跳机械舞一样动）：
+animation-timing-function:steps(4,start);
+animation-timing-function:steps(4,end);
+
+steps(n,start)		设置n个时间点，第一时间点变化状态
+steps(n,end)		设置n个时间点，第一时间点初始状态
+step-start			等于steps(1,start)，可以理解为从下一步开始
+step-end			等于steps(1,end)，可以理解为从当前步开始
+
+
+
+小贴士：在对一个元素使用绝对定位时(position:absolute)，如果想让其根据父元素或者最近元素来进行定位，需要在祖先元素上设置属性继承，即（position:relative）
+
+
+
+
+9:播放状态
+animation-play-state:
+paused:暂停
+runing:运行
+
+
+10：填充模式
+animation-fill-mode
+用于定义动画播放结束后处理模式，是回到原来状态还是停止在动画结束状态
+none			需要等延迟结束，起始帧属性才应用
+backwards		动画效果在起始帧，不等延迟结束
+forwards			结束后停留动画的最后一帧
+both			包含backwards与forwards规则，即动画效果在起始帧，不等延迟结束，并且在结束后停止在最后一帧
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+媒体查询（响应式布局基础）
+功能是在不同的条件下使用不同的样式，使页面在不同的终端下达到不同的渲染效果
+1：在屏幕显示与打印设备上不同的CSS效果
+<style media="screen">
+h1{
+ font-size:3em;
+color:blue;  
+}
+</style>
+<style>
+h1{
+  font-size:8em;
+color:red;
+  }
+h2,hr{
+display:none;    
+}
+</style>
+
+
+2:也可以使用link的方法来引入对应媒体设备的样式
+<link rel="stylesheet" href="common.css">/*没有指定媒体所以全局应用*/
+<link rel="stylesheet" href="screen.css" media="screen">/*应用在屏幕设备*/
+<link rel="stylesheet" href="print.css" media="print">/*应用在打印设备*/
+可以在CSS文件中使用@media再定义媒体样式
+
+
+
+3：使用@import可以引入指定设备的样式规则，CSS文件中引入一个样式文件，在这个文件中再引入其他媒体的样式文件（推荐使用）
+HTML引入
+<link rel="stylesheet" href="style.css">
+
+CSS文件
+style.css
+@import url(screen.css) screen;
+@import url(print.css) print;
+
+@import url(small-x.css) only screen and (max-width:768px)
+@import url(small.css) only screen and (min-width:768px)
+@import url(medium.css) only screen and (min-width:960px)
+@import url(big.css) only screen and (min-width:1200px)
+
+
+
+
+
+4：可以使用@media做到更细的控制，即在一个样式表中为多个媒体设备定义样式
+<style>
+@media screen{
+  h1{
+    font-size:3em;
+    color:blue;
+      }
+   }
+@media print{
+   h1{
+  font-size:8em;
+  color:red;
+       }
+h2,hr{
+    display:none;
+         }
+
+     }
+
+</style>
+
+
+
+
+5:查询条件
+5.1逻辑与（多个条件使用and连接）
+exp:需要同时满足横屏显示以及宽度不能超过600px;
+ <style>
+        @media screen and (orientation: landscape) and (max-width: 600px) {
+            body {
+                background: #8e44ad;
+            }
+
+            h1 {
+                font-size: 3em;
+                color: white;
+            }
+        }
+    </style>
+
+
+
+5.2逻辑或（多个条件查询使用逗号连接）
+exp:(如果设备是横屏显示或者宽度不超过600px时就使用样式规则)
+ <style>
+        @media screen and (orientation: landscape),
+        screen and (max-width: 600px) {
+            body {
+                background: #8e44ad;
+            }
+
+            h1 {
+                font-size: 3em;
+                color: white;
+            }
+        }
+    </style>
+
+
+
+5.3不应用（not 表示不应用样式，即所有条件都满足时不应用样式。）
+必须将not写在查询的最前面
+exp:
+<style>
+        @media not screen and (orientation: landscape) and (max-width:600px) {
+            body {
+                background: #8e44ad;
+            }
+
+            h1 {
+                font-size: 3em;
+                color: white;
+            }
+        }
+    </style>
+
+
+
+5.4排除不支持媒体查询的浏览器（only）
+1:对不支持媒体查询的设备，正常调用样式，此时就当only不存在；
+2：对不支持媒体查询的设备不使用样式
+3：only和not一样只能出现在媒体查询的开始
+exp:
+@media only screen and (orientation: landscape) and (max-width: 600px) {
+	...
+}
+
+
+
+
+
+6:查询特征
+常用特征
+orientation: landscape | portrait	landscape横屏，portrait竖屏
+width				设备宽度
+height				设备高度
+min-width			最小宽度
+max-width			最大宽度
+min-height			最小高度
+max-height			最大高度
+
+exp:
+1：在支持媒体查询的设备并且设备宽度为568px时使用样式
+@media only screen and (width:568px) {
+    ...     
+}
+
+2：在设备不小于569px，并且支持媒体查询的设备时使用样式
+@media only screen and (min-width:569px) {
+	...
+}
+
+
+3：在横屏设备并且宽度大于569px时使用样式
+@media only screen and (orientation: landscape) and (min-width:569px) {
+	...
+}
+
+
+
+
+7:rem
+CSS文件中：
+:root{
+ font-size:15px  
+ }
+
+.logo{
+  font-size:1.5rem;
+   }
+
+这样写的好处有利于开发效率，只需要改动这一个地方就可以改变整体大小
+这里的:root也可以写成html，意思就是浏览器默认的尺寸，通过对这一个属性的设置，就可以改变浏览器的默认值，这样在后续的开发当中就可以以这一个为基准；
+
+8：vh和vw单位的意思是把屏幕等分成一百份，然后我们可以按照比例来使用，它可以使用在任何一个元素里面，它是相对于视口的高度和宽度；
+而CSS百分比是相对于包含它的最近父元素的高度和宽度
+
+
+9：浏览器在初始的时候给我们默认了一些边距，我们需要通过浏览器的检查功能来分析页面
+
+
+
+
+10：
+不同终端通用尺寸：
+超小屏幕（手机）  <768px
+小屏设备（平板）  768px<~<992px
+中等屏幕（桌面显示器）  992px<~<1200px
+宽屏设备（大桌面显示器）  ~<1200px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+
+
+
+
+
+
+JS创建变量的快捷方式
+var price=5,quantity=14;可以一次性定义变量和值以及方法
+
+
+JS在命名变量的时候要规范，要尽量使用对应的英文单词词组，对于词组可以使用驼峰命名法（firstName）
+
+
+this关键字
+当一个函数创建于脚本的最高级别时（既不在另外一个对象也不再其它函数内），它就位于全局作用域或全局上下文中
+exp:用this关键字返回windows对象的属性
+function windowsSize(){
+  var  width = this.innerWidth;
+  var  height = this.innerHeight;
+return [height,widht];
+}
+
+所有全局变量都是windows对象的属性，所以当一个函数在全局上下文中时，可以通过windows对象访问它，和使用属性一样（windows对象最大！）
+所谓方法，就是定义在一个对象里面的一个函数
+
+this通常指向的是它的父对象所包含的内容
+exp:
+var shape ={
+width:600,
+height:400,
+getArea:function(){
+return this.width*this.height;
+}
+};
+
+
+
+
+注意下面两种区分：
+1：
+var width = 600;
+var shape = {width:300};//这是一个对象
+
+var showWidth = function(){
+document.write(this.width);
+};
+showWidth();这里的this指向的是600；
+
+2：
+var width = 600;
+var shape = {width:300};//这是一个对象
+
+var showWidth = function(){
+document.write(this.width);
+};
+shape.getWidth = showWidth;
+shape.getWidth();
+因为这里把函数赋值给了一个对象，因此this指向的是·300；
+
+
+
+
+
+
+isNaN()检查值是否为数字
+toFixed()将特定数字四舍五入至指定小数位数，返回的是一个字符串（exp:toFixed(3)）
+toPrecision()返回以为小数的字符串
+
+
+
+
+JS数据类型转换
+1：字符串转整数：parseInt("12")   parseInt("C",16)  Number("12")
+2:字符串转小数：parseFloat("12.2")    Number("12.2")
+3:数字转字符串：console.log(myNum.tostring(16));    console.log(String(myNum));
+4:其他类型转字符串：Boolean("")
+
+JS算术运算符
+1：+-*/%,其中只有+可以用于两个字符串的连接
+2：递增运算符：++    递减运算符：--
+3：三目运算符：（条件）？（符合条件输出）：（不符合条件输出）
+
+JS五种创建对象的方法
+1：对象字面量
+var song={
+    name:"Liekkas",
+    time:180,
+    "song lanuage":English,
+    singer:{
+       singerName:"Sofia Jannok",
+           singerAge:30
+}
+};
+
+2:通过关键字new创建对象
+var Store=new Object();
+Store.name="lofo Market";
+Store.location="NO.13 Five Avenue";
+Store.salesVolume=100000;
+
+3:通过工厂方法创建对象(创建该对象只需要调用该函数即可，适用于一次创建多个对象)
+#对象创建函数
+function creatStoreObject(name,location,salesVolume){
+var store=new Object();
+store.name=name;
+store.location=location;
+store.salesVolume=salesVolume;
+store.display=function(){
+    console.log(this.name);
+};
+return store;
+}
+#利用该函数创建一个对象
+var store1=createStoreObject("pandas express","No.1,People Street",200000);
+var store1 = new store("pandas express","No.1,People Street",200000);
+
+
+
+
+
+4:使用构造函数创建对象（构造函数名必须以大写字母开头，函数体没有返回语句）
+#构造函数
+function Store(name,location,salesVolume){
+    this.name=name;
+    this.location=location;
+    this.salesVolume=salesVolume;
+}
+#创建对象实例
+var myStore=new Store("KeyExp","No.1,L.Street",540000);
+
+5:使用原型（prototype）创建对象
+function Store(){};
+Store.prototype.name="SF Express";
+Store.prototype.name="Hong Kong";
+Store.prototype.salesVolume=12000000;
+#创建对象
+var myStore=new Store();
+
+#创建一个新的对象
+var hisStore=new Store();
+hisStore.name="STO Express";
+
+
+
+JS 属性的增删查改（对象）
+1：属性的获取
+方法一：使用‘.’符号，符号左侧是对象的名字，右边是属性的名字
+exp:
+var student = {name:"Alice",gender:"gile"};
+cosole.log(student.name);#输出
+方法二：使用[""]符号，符号左边是对象的名字，双引号中间是属性的名字（该属性可以是任何形式，比如是一个表达式）
+exp:
+var student = {name:"Alice",gender:"gile"};
+console.log(student["name"]);#输出
+
+2：属性的修改和新增
+直接对属性进行赋值即可
+exp:
+var student={name:"kom",age:21};
+student.age=20;#修改属性，覆盖原来的值
+student.gender="female";#新增属性
+
+3：属性的删除
+var Store=new Object();
+Store.name="Bob";
+Store.location="No.12 Five Avenue";
+console.log(delete Store.name);#删除成功，输出True
+console.log(Store.name);#对于已经删除的属性，输出undefined
+delete Store.prototype;#删除失败，非自有属性
+
+JS属性的检测和枚举（对象）
+1：属性的检测：使用运算符in，in的左侧是属性或者方法名，右侧是检测对象，对象有该属性或者方法返回true;
+exp:
+var school={
+    name:"SJTU",
+    location:"Shanghai",
+    studentNum:4000,
+    display:function(){
+        console.log(this.name);
+    }
+};
+#检测属性
+console.log("name" in school);
+console.log("sales" in school);
+#检测方法
+console.log("display" in school);
+2:使用hasOwnProperty(),括号内的参数是属性或者方法的名字
+console.log(school.hasOwnProperty("studentNum"));//true
+
+3:属性的枚举
+3.1:
+for(var att in school){
+    console.log(att);
+}
+
+3.2:
+console.log(Object.getOwnPropertyNames(school));
+
+3.3：
+console.log(Object.keys(school));//返回的是对象中所有的键
+console.log(Object.values(school));//返回的是对象中所有的值
+
+
+
+4：对象的解构
+let user = {name:"小灰",age:18};
+
+const {name,age}=user;(直接调用键即可！)
+
+let { age } = user;//18
+
+console.log(name,age)//"小灰",18
+
+
+5:变量转化为对象
+exp:
+let name = "小灰"，
+url = "xiaohui";
+
+let opt = {name,url};
+console.log(opt);//{name:"小灰"，url:"xiaohui"}
+
+
+
+
+6：对象的复制
+方法一：
+let hd ={name:"刘辉",title:"好好学习"}；
+let obj = {...hd}//这种复制都是开辟了一个新的内存空间地址
+
+
+方法二：
+(object.assign())
+exp:
+let hd ={name:"刘辉",title:"好好学习"}；
+let obj = object.assign({},hd);
+console.log(obj);
+
+方法三：（可以在复制的同时添加一些东西）
+let obj = {};
+for(const key in hd){
+obj[key] = hd[key] + "刘辉"；
+}
+
+
+
+
+
+
+
+
+
+
+7:不允许向对象中添加属性API的方法
+7.1:object.isExtensible(user);//user是一个对象
+
+
+7.2:object.seal(user);
+
+7.3:object.freeze(user);
+
+
+8：对象中可以包含数组，数组中也可以包含对象；
+
+
+9：在对象中，变量即对象的属性函数即对象的方法，此外，数组和对象也被视为真值（即True）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+JS数组的创建，读写和长度
+1：数组的创建
+1.1：var numberArray = [1,2,3,'python',true,4]
+1.2:  var myArray = new Array();
+1.3:let arr = Array.of(6);//定义一个长度为六的数组，使用此方法不用担心由于没有定义的空间出现问题，否者为undefind;
+
+2:读取：var read=numberArray[0]
+3:写入：对某一个元素重新赋值
+4：数组长度：numberArray.length(数组的长度也可以写入，当写入的值小于数组的实际长度时，数组会被删除一部分，大于实际长度时，数组的尾部添加一些空的区域)
+
+JS数组元素的增减
+1：数组元素的增加
+1.1：直接通过下标添加
+var numberArray=[1,2,3,4];
+numberArray[numberArray.length]=7;#添加
+1.2：使用push()函数
+var newlength=numberArray.push(7)
+1.3在头部添加元素
+var newLength=numberArray.unshift("he","llo");
+1.4把一个数组添加到另外一个数组（即合并两个数组）
+let arr = ["dfrhtr","dfbh"];
+let hd = ["fg","dsg"];
+arr = [...arr,...hd];
+console.log(arr);
+1.5指定位置添加
+console.log(Array(5).fill("xiaohui"));
+console.log([1,2,3,4].fill("xiaohui",1,3));//[1,"xiaohui",2,"xiaohui",4]
+
+2:数组元素的删除
+2.1：修改数组长度
+numberArray.length=3;
+2.2:使用delete运算符
+delete numberArray[0];
+2.3:使用pop(),一次删除一个
+var deletenumber=numberArray.pop();
+2.4在头部删除元素
+numberArray.shift();#一次删除首部的一个
+
+JS数组的遍历和多维数组
+1：使用for循环（和c语言一样）
+exp:
+let lessons =[
+{title:"好好学习",name:"xiaohui"},
+{title:"天天向上",name:"xiaomei"},
+{title:"天道酬勤",name:"xiaoli"}
+];
+for(let i=0;i<lessons.length;i++){
+lessons[i].title = `刘辉${lessons[i].title}`;
+}
+1.1
+for(const value of lessons){
+value.title = `刘辉${value.title}`;
+}
+
+1.2
+for(const key inlessons){
+lessons[key].title = `刘辉${lessons[key].title}`;
+}
+
+
+2：forEach()方法，该方法有三个参数，第一个是当前的数组元素，第二个是当前索引，第三个是数组对象索引
+var numArr = [10,11,12,13,14];
+numArr.forEach(function(mem,i,arr) {
+    mem *= 10;
+    arr[i] = mem;
+});
+console.log(numArr);//输出[100,110,120,130,140]
+3：多维数组实现
+3.1：创建已知的二维数组：
+var multiArr = [[1,2,3,4],[5,6,7],[8,9]];
+3.2：创建仅知道长度的二维数组
+//创建一个4行6列的二维数组
+var muArr = new Array(4);
+for(var i = 0;i <4;i++) {
+    muArr[i] = new Array(6);
+}
+
+4:其他类型转化为数组
+let str = "dfgjer"
+4.1：str.split(",");
+4.2: Array.from(str);
+4.3 const [...arr]="sdgrdh";
+
+
+5：数组解构
+exp: 
+let arr = ["xiaohui",1999];
+let[name,year]=arr;
+console.log(name,year);
+
+
+
+6:splice函数（可同时实现增加，删除，替换）
+let arr = [1,2,3,4,5]
+arr.splice(1,1,'sdgfb');//替换下标为1的值（第二个参数为1表示删除，为0表示添加）
+arr.splice(1,0,'sdgfb');//增加元素到指定下标
+
+
+
+7：清空数组
+let hd = [1,2,3,4,5];
+方法一：hd=[];//操作的是一个新的空数组
+方法二：hd.length=0;//操作的是原数组
+方法三：hd.splice(0,hd.length);
+
+
+8：复制数组元素到指定位置（copyWithin()）
+let hd = [1,2,3,4,5,6];
+console.log(hd.copyWithin(3,1,3));//把1和3从数组下标为3的位置开始复制结果为：[1,2,3,2,3,6];
+
+
+
+9：几种数组元素查找方法
+9.1:includes()函数查找
+let arr = [1,2,3,4,5,6];
+console.log(arr.includes(2))//true
+
+9.2:find()(返回值)     findIndex()（返回值的下标即所在位置）
+exp:let lessons = [{name:"js"},{name:"css"},{name:"mysql"}];
+let status = lessons.find(function(item){
+return item.name="css";
+});
+cosole.log(status);
+
+
+
+10：map()方法
+map（）方法创建一个新的数组，其结果是该数组中每一个元素都调用一个提供的函数后返回的结果；
+exp:
+let array1 = [1,4,9,6];
+const map1 = array1.map(x=>x*2);
+console.log(map1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+set()方法（类python集合）(主要作用为去重)
+1：定义
+let set = new Set([1,2,3,4,5]);//{1,2,3,4,5}数组自动转化为集合
+2:添加
+set.add(1);
+3：字符串转化为集合
+let set = new Set([..."sdgerh"]);//{"s","d","g","e","r","h"}
+4:获取集合数量
+console.log(set.size);
+5:判断是否含有某元素
+console.log(set.has("1"))//true
+6:删除某一个元素
+set.delete('1');
+7:清空集合
+set.clear();
+
+8:集合转化为数组
+let set = new Set(["dfghr","dfg"]);
+console.log(Array.from(set));
+console.log([...set]);
+
+
+9:数组转化为集合
+let hd = new Set("1234567");
+let arr = [...hd].filter(function(item){
+return item < 5;
+});
+hd=new Set(arr);
+console.log(hd);
+
+
+或者：
+let hd =new Set( [...hd].filter(item => item < 5));
+
+
+
+10:交并集处理
+let a = new Set([1,2,3,4,5]);
+let b = new Set([4,5,2,9]);
+
+并集
+console.log(new Set([...a,...b]));
+
+交集
+console.log(new Set([...a].filter(function(item){return b.has(item)})));
+
+console.log(new Set([...a].filter(function(item){return !b.has(item)})));
+
+
+垃圾回收：
+hd=null
+
+
+=======================================================================================================
+=======================================================================================================
+JS数组的常用方法
+1：查找元素的位置，有两种方法：indexof()和lastIndexof(),前者从索引小处往大搜索，后者相反，返回的是第一次遇到该元素的索引；两者都有两个参数，第一个参数是要找的元素，第二个参数可选，为搜索起点索引；第二个参数可以是负数，-1表示倒数第一个元素，以此类推；
+
+2：数组的合并：数组a.concat(数组b)
+
+3:  数组倒置：数组var b=a.reverse();数组a和b都会被倒置
+
+4：元素合并：
+var sArray = ["June","July","August"];
+console.log(sArray.join());//输出June,July,August
+console.log(sArray.join("+"));//输出June+July+August
+
+
+5：元素排序：
+5.1:
+var arr = [1,2,10,5,12];
+arr.sort();
+5.2:
+console.log(arr);//输出[1,10,12,2,5]
+console.table(arr);
+5.3
+arr.sort(function(a,b){
+     return a-b;
+});
+console.log(arr);//输出[1,2,5,10,12]
+arr.sort(function(a,b){
+     return b-a;
+});
+console.log(arr);//输出[12,10,5,2,1]
+
+
+5.4:对数组对象进行排序
+exp:
+let cart = [
+{name:"iphone",price:12000},
+{name:"imac",price:18000},
+{name:"ipad",price:3200}
+];
+cart = cart.sort(function(a,b){
+return b.price-a.price;
+}
+);
+cosole.table(cart);
+
+6:提取子数组：（与python类似）
+var arr = ["a","b","c","d","e"];
+console.log(arr.slice(0,3));//["a","b","c"]
+console.log(arr.slice(0,-2));//["a","b","c"]
+console.log(arr.slice(4));//["e"]
+console.log(arr.slice(-4));//["b","c","d","e"]
+
+JS数组的内排序
+1：冒泡排序
+一趟冒泡排序结束后最大的元素已经移到了索引最大处
+var arr = [9，5，8，0，2，6];
+var aLength = arr.length;
+var temp;
+var flag = 0;//元素交换的标志位
+for(var i = 1;i < aLength;i++) {//共进行n-1次冒泡
+    flag = 0;
+    for(var j = 0;j < aLength-i;j++) {//一次冒泡
+        if(arr[j]>arr[j+1]) {//交换元素
+            temp = arr[j];
+            arr[j] = arr[j+1];
+            arr[j+1] = temp;
+            flag = 1;
+        }
+    }
+    if(flag == 0) break;//本次冒泡没有元素交换
+}
+2：选择排序
+遍历数组，记录下最大元素的索引值，将最大的元素与数组最后一个元素交换。这样最大的元素到了索引值最大的地方
+var arr = [6,12,3,34,1,56,77,0,2,43];
+var aLength = arr.length;
+var temp;
+var max = arr[0];
+var maxIndex = 0;
+for(var i = 0;i < aLength-1;i++) {//共进行n-1次选择
+    for(var j = 1;j < aLength-i;j++) {//一次选择
+        if(arr[j] > max) {
+            max = arr[j];#不断更新最大值的位置
+            maxIndex = j;#不断更新最大值的索引
+        }
+    }
+    //将本次选出的最大元素移动到最终的位置上
+    temp = arr[aLength-i-1];
+    arr[aLength-i-1] = arr[maxIndex];
+    arr[maxIndex] = temp;
+    var max = arr[0];
+    var maxIndex = 0;
+}
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+函数(封装需要重复使用的代码)
+1：JS用函数语句定义函数
+函数的定义是指用一段代码实现函数的功能，通常的定义方式以关键字function开头。
+function sumArray(arr) {
+    var sum = 0;
+    for(var i = 0,aLength = arr.length;i < aLength;i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+要注意的是函数可以返回一个数组，具体使用是定义一个变量，该变量用于获取具有多个值的数组，最后单独返回该变量即可
+2：用表达式定义函数（匿名函数）
+var funct = function getMax(a,b) {
+    return a>b?a:b;
+};//注意这里的分号不能少，因为我们定义的是一个变量！
+console.log(funct(1,2));//输出2
+
+或者
+var funct = function(a,b) {
+    return a>b?a:b;
+};
+
+
+
+立即调用函数表达式（IIFE，用作一组代码的封装器，可以有效地保护变量）
+var area = (function(){
+var width = 3;
+var height = 2;
+return width * height;
+}()//注意不要遗漏这一个括号
+);
+
+要注意的是匿名函数以及函数表达式（及其立即调用）用于任务中只需要运行一次的代码，而非脚本上需要多次反复调用的情况
+1：当函数被调用时作为实参（为此函数计算出一个值）
+
+2：用于为对象的属性赋值；
+
+3：用于事件处理程序和监听器
+
+4：用于防止在两段脚本上因使用相同的变量而产生冲突
+
+
+
+
+
+
+应当尽量避免大量的定义全局变量，因为全局变量使用更多的内存，浏览器需要在整个页面载入期间保存它们，而局部变量只需要在函数执行期间被保存（多定义函数，对象）
+
+
+
+
+
+
+
+
+
+3：对象里定义的函数的调用
+var ob = {
+    id:1,
+    getMax:function(a,b) {
+        return a>b?a:b;
+    }
+};
+简写：
+var ob = {
+    id:1,
+    getMax(a,b) {
+        return a>b?a:b;
+    }
+};
+
+var result = ob.getMax(2,1);//result值为2
+var result1 = ob["getMax"](2,1);//result1的值也是2
+这里要定位到函数，需要使用对象名.函数名或者对象名["函数名"],其它相同
+
+4：未定义的实参
+给可能被传入undefined的值的形参设定一个默认值
+exp:function getSum(a,b,c) {
+    if(c === undefined) 
+        c = 0;
+    console.log(a+b+c);
+}
+myFunction(1,2);
+
+
+5:实参对象
+实参对象一个最重要的应用是可变长参数列表，想象一下求一组数的和，
+如果这组数不在一个数组里面，使用函数来求则无法定义函数体，因为不知道形参的个数。
+这个时候就可以用arguments来解决问题。
+function getSum() {
+    var aLength = arguments.length;
+    var sum = 0;
+    for(var i = 0;i < aLength;i++) {
+        sum += arguments[i];
+    }
+    return sum;
+}
+console.log(getSum(1,2,3,4,5))//输出15
+
+或者：
+function getsum(...args){
+return args.reduce((a,b)=>a+b);
+}
+console.log(getSum(1,2,3,4,5))//输出15
+6：对象作为参数
+function myFunction(obj) {
+    console.log(obj.name);
+    obj.number++;
+    return obj.number;
+}
+myObj = {name:"myObj",number:34};
+myFunction(myObj);//输出myObj
+console.log(myObj.number);//输出35
+
+7：函数对象
+function getMax(a,b) {
+    return a>b?a:b;
+}
+//求最小值
+function getMin(a,b) {
+    return a<b?a:b;
+}
+//下面这个函数以函数作为参数，并最终返回一个值
+function getM(func,num1,num2) {
+    return func(num1,num2);
+}
+getM(getMax,1,2);//返回2
+getM(getMin,1,2);//返回1
+
+
+
+
+8：箭头函数
+exp:
+let hd = function(){
+return 1+2;
+};
+
+let hd = () => 1+2;//箭头后面对应的是值
+
+特点：
+1：函数必须赋值给一个新的变量；
+2：在原型函数的基础上删除了function和{}以及return；
+
+=======================================================================================================
+=======================================================================================================
+字符串的常用方法
+1：查找字符串的位置
+indexof()返回某个字符串在字符串中首次出现的位置，如果搜索到尾部还没有找到，返回-1；
+Indexof(a,b)中a是字符串，b是开始查找的位置；
+var short = "ab";
+var long = "aabccccaab";
+var mix = "cdef";
+long.indexOf(short);//返回1
+long.indexOf(short,4);//返回8
+long.indexOf(mix);//返回-1
+
+lastindexof()和indexof()功能相似，区别是搜索方向是从后往前搜索；
+
+2：求指定位置的字符
+charAt()   作用是返回调用者指定位置的字符，位置从0计数
+var str = "abcdefg";
+console.log(str.charAt(0));//输出a
+console.log(str.charAt(str.length-1));//输出g
+console.log(str.includes("a",0));//true-----------判断字符是否存在，返回布尔类型值
+console.log(str.startWith("a"));//true------------判断是否以指定字符串开头，返回布尔值
+console.log(str.toUpcaser().rendWith("a"));//true------------判断是否以指定字符串结尾，返回布尔值,不区分大小写
+
+
+
+3：字符串的截取
+slice(a,b)的作用是截取a位置（含**）到b位置（不含**）之间的字符串，
+被截取的字符串不变，返回截取后获得的子字符串。
+
+substring(a,b)与slice(a,b)功能相同，参数的意义也相同：a和b都是表示位置的数字。
+只是参数的处理有些不同：
+a或b为负数时，自动转换为0；
+a大于b时，编译器会自动对调两者。
+
+substr(a,b)指定开始位置和要截取的长度。
+
+
+大小写转换
+toLowerCase()把字符串中的所有大写英文字母转为小写，返回转换后的字符串，但是操作该函数的字符串不变。
+var upperStr = "aBCd";
+var lowerStr = upperStr.toLowerCase();
+console.log(upperStr);//输出aBCd
+console.log(lowerStr);//输出abcd
+
+toUpperCase()
+与上面的函数相反，toUpperCase()把字符串中的所有小写英文字母转为大写，返回转换后的字符串，但是操作该函数的字符串不变。
+var str = "asdf";
+var strin = str.toUpperCase();
+console.log(str);//输出asdf
+console.log(strin);//输出ASDF
+
+
+字符串的分割
+split()与join()的作用相反，split()以指定的字符分割字符串，从而得到一个子字符串数组
+
+
+
+trim()   删除字符串开始和结束的空格
+length 获取当前字符串的字节长度
+
+
+
+
+
+replace()用于字符串的替换,exp:replace('me','w');第一个值是要被替换的字符
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+JS正则表达式
+正则表达式提供了字符串字面量，字符类，重复，选择，分组，引用，指定匹配位置，修饰符等功能；
+1：字符串字面量（exp:aa匹配的就是字符串aa）
+var pattern = /aa/
+pattern.test("aa")//true
+\n换行符    \f 换页符    \t制表符     \v垂直制表符     \r回车符
+
+2：字符类（定义）
+var lowerCharPattern = /[a-z]/;//匹配任意小写字母
+var upperCharPattern = /[A-Z]/;//匹配任意大写字母
+var numberPattern = /[0-9]/;//匹配任意数字
+var mixPattern = /[a-zA-Z0-9]/;//匹配大小写字母，数字
+
+在中括号内**最前面加上^符号表示反向匹配**：匹配和中括号内的正则表达式不匹配的所有字符，比如：
+（定义和使用）
+var notNumberPattern = /[^0-9]/;
+notNumberPattern.test("123");//false
+notNumberPattern.test("ahc");//true
+
+\w    [a-zA-Z0-9]  匹配大小写字母以及数字
+\W    [^a-zA-Z0-9]  匹配所有非大小写字母以及数字
+\d     [0-9]  匹配数字
+\D     [^0-9]  匹配所有非数字
+一个数字后面紧跟小写字母的正则表达式匹配方法
+var pattern = /[0-9][a-z]/;
+pattern.test("1a")//true
+pattern.test("a1")//false
+
+注意中括号[]的使用，一个中括号表示一个类别
+匹配两个连续的数字可以表示为[0-9][0-9]
+
+
+3:重复类
+重复表示指定的字符或者字符串（前面紧邻的字符）可以连续出现多次
+exp:var pattern = /a{100}/;
+
+{a,b}中的a,和b都是数字，表示前面的字符至少出现a次，最多出现b次；
+var pattern = /at{1,2}/;    //表示a后面最少一个t，最多两个t
+pattern.test("at");//true
+pattern.test("att");//true
+pattern.test("am");//false
+
+{a,}表示前面的字符至少出现a次,最多不限制；
+var pattern = /[0-9]{4,}/;//匹配最少四个数字
+pattern.test("1234");//true
+pattern.test("1");//false
+
+{a}表示前面的字符出现a次
+
+？，表示前面的字符出现一次或者不出现，等价于{0，1}；
+
++，表示前面的字符（单个）至少出现一次，等价于{1，}；
+
+*，表示前面的字符（单个）至少出现一次，等价于{0，}；（可以不出现）
+var pattern = /A[0-9]*B/;//匹配A和B之间为空或者只有数字
+pattern.test("AB");//true
+pattern.test("A1B");//true
+pattern.test("AaB");//false
+
+在JavaScript中，使用\实现特殊符号的普通化，又叫做转义：
+var pattern1 = new RegExp("\?");//匹配一个问号
+var pattern2 = /\+{4}/;//匹配四个加号
+
+
+
+4：选择类
+选择使用符号|来实现，比如0|1表示匹配0或者1，\d|a表示匹配数字或者字母a
+exp:
+[0-9]|[a-z]匹配的是字符串1ABCa中的子串1还是a?
+JavaScript会先挑选左边的子正则表达式[0-9]进行匹配，匹配成功后立即结束，所以匹配上的子串是1
+
+如果想要限制|符号的作用范围，需要将目标作用范围用圆括号包含在内，如：
+var pattern = /(0|1)ABC/;//选择符号仅仅作用在0和1上，而不是像上面的例子一样作用在整个正则表达式中
+
+编写的正则表达式就是一个模型，匹配符合该模型的一切内容，//里面包含一个完整的正则表达式
+[]里面是其中的一个特征
+{}通常用来限制前面字符的出现次数
+(|)通常用于选择
+
+
+
+5：分组类
+var pattern = /hello{3}/;重复只能作用于紧邻符号的前面一个字符上
+pattern表达的意思是字母o必须重复三遍，而不是单词hello必须重复三遍。
+如果要表达单词hello必须重复三遍的意思，我们需要用到分组。
+var pattern = /(hello){2}/;//匹配字符串hellohello
+
+
+
+6：引用类
+需要用到引用的情况：
+以数字开头，中间是若干个字母，以数字结尾，并且开头的数字和结尾的数字相同，
+这个时候用前面所有介绍过的方法都不可行，无法确保开头的数字和结尾的数字相同。
+
+后面可以用\1引用编号为1（数该字符串左边有几个左括号，第几个编号就是几）的子表达式，依次类推，比如：
+var pattern = /(A|B)(\d{5})not([0-9])\1\2/;
+
+注意：在使用[0-9][A-Z]等匹配的时候，默认情况下匹配一个字符，特殊情况（大于1）使用重复{}；
+
+
+
+
+7：匹配位置
+var startPattern = /^[0-9]/;//匹配以数字开头的字符串
+
+var endPattern = /ing$/;//匹配以ing结尾的字符串
+
+\b用来匹配单词的边界(该字符前后（取决于\b在字符串的位置）没有字母就匹配)
+exp: var boundaryPattern = /\bOK\b/;//匹配单词OK
+
+
+\B用来匹配非单词的边界，与上面的\b相反(该字符前后（取决于\B在字符串的位置）有字母才匹配)
+
+exp:var pattern = /\Bed/;//ed左侧不能是单词的边界
+
+注意：^[js]\b  与  ^js\b的区别
+
+
+
+8：修饰符
+修饰符需要放在//符号之后
+
+i表示整个的匹配过程中不考虑单词的大小写
+exp:var pattern = /^edU/i;//匹配以字母edu开头，不区分大小写进行匹配
+console.log(pattern.test("edu"));//输出true
+
+全局匹配：
+g表示执行全局匹配，即找出所有满足匹配的子字符串。比如，已知match()函数返回由匹配结果组成的数组，如果没有匹配到返回null。
+不用g修饰时：
+var pattern = /[a-z]/;//匹配小写字母
+console.log("a1b2c3".match(pattern));//输出["a", index: 0, input: "a1b2c3"]
+用g修饰时：
+var pattern = /[a-z]/g;//全局匹配小写字母
+console.log("a1b2c3".match(pattern));//输出["a", "b", "c"]
+
+
+多行模式：
+有的时候，需要匹配的字符串很长，分为很多行（即中间有换行符号）。
+m在多行模式中执行匹配，即：符号^不仅匹配整个字符串的开头，还匹配每一行的开头，&不仅匹配整个字符串的结尾，还匹配每一行的结尾。
+var pattern = /[0-9]$/m;//多行匹配以数字结尾的字符串
+var string = "1\nhello";//字符串在两行，中间的\n是换行符
+console.log(pattern.test(string));//输出true
+
+
+正则表达式的使用
+
+search(a)方法
+参数：a为正则表达式。
+功能：返回字符串中与该正则表达式匹配的第一个子串的起始位置（即下标），无匹配返回-1。
+var pattern = /[0-9]/;
+var string = "a3b2c1";
+console.log(string.search(pattern));//输出1
+
+split(a)方法
+参数：a是字符串或者正则表达式；
+功能：以a为分隔符分隔原来的字符串；
+返回值：分割后形成的子字符串数组。
+console.log("a1b2c3d".split(/[0-9]/));//以数字为分隔符，输出["a", "b", "c", "d"]
+
+
+replace(a,b)方法
+参数：a是正则表达式，b是字符串；
+功能：用b替换掉第一个和a匹配的子串，如果a中有修饰符g，替换掉所有子串；
+返回值：被替换后的字符串。
+var pattern1 = /[0-9]/;
+var pattern2 = /[0-9]/g;
+var string = "a1b2c3";
+console.log(string.replace(pattern1,"A"));//部分替换，输出aAb2c3
+console.log(string.replace(pattern2,"A"));//全部数字被替换，输出aAbAcA
+
+复杂的情况：b还可以是子表达式$1、$2等，$1等会先被替换为与它匹配的子串。比如：
+var pattern = /([0-9])[A-Z]/g;
+var string = "1A,2B,3C,1";
+console.log(string.replace(pattern,"$1"));//输出1，2，3，1
+上面的$1指的是与子表达式[0-9]匹配的子字符串，比如第一个匹配1A中$1指的是1，第二个匹配2B中$1指的是2，依次类推。
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+JSON对象
+JSON对象与Javascript对象的区别
+三点区别：
+JSON对象的属性名（key）必须被包含在双引号之中，而JavaScript对象除了有空格的属性名、中间有连字符-的属性名必须在双引号之中外，其它随意；
+不能在JSON对象中定义方法，而在JavaScript对象中可以；
+JSON对象可以被很多语言操作，而JavaScript对象只有JS自己可以识别。
+
+
+在JavaScript中定义一个JSON对象：
+var jsonObject = {"name":"js","number":2};
+操作属性，使用.或者[]：
+console.log(jsonObject.name);//读属性，输出js
+console.log(jsonObject["name"]);//读属性，输出js
+jsonObject.name = "javascript";//写属性，给name属性赋值javascript
+
+删除属性，使用delete：
+var jsonObject = {"name":"js","number":2};
+delete jsonObject.name;//删除name属性
+
+遍历属性，使用for-in循环：
+var jsonObject = {"name":"js","number":2};
+for(att in jsonObject) {
+  console.log(jsonObject[att]);//依次输出js、2
+}
+
+
+
+JSON数组
+JSON键值对中的值(value)可以是一个数组，比如：
+{
+"country":"China",
+"population":"1.3billion",
+"bigCity":["Peking","Shanghai","ShenZhen","HongKong"]
+}
+属性bigCity的值有多个，放在一个数组里面。
+上面例子里面，数组的每一个元素都是字符串。其实，数组的每一个元素还可以是另外一个json对象。比如：
+{
+"class":"高三一班",
+"studentNumber":70,
+"score":[
+    {"name":"LiMing","score":128},
+    {"name":"ZhangHua","score":134},
+    {"name":"ShenLu","score":112}
+]
+}
+数组的一些操作
+读写元素：
+var myJson = {
+"country":"China",
+"population":"1.3billion",
+"bigCity":["Peking","Shanghai","ShenZhen","HongKong"]
+}
+console.log(myJson.bigCity[1]);//打印出Shanghai
+myJson.bigCity[0] = "GuangZhou";//第一个元素被赋值为GuangZhou
+遍历：
+var myJson = {
+"country":"China",
+"population":"1.3billion",
+"bigCity":["Peking","Shanghai","ShenZhen","HongKong"]
+}
+for(var i = 0;i < myJson.bigCity.length;i++) {
+    console.log(myJson.bigCity[i]);//依次输出Peking,Shanghai,ShenZhen,HongKong
+}
+
+
+
+JSON字符串到JavaScript对象
+JSON.parse(a,b)方法将JSON字符串a转换为JavaScript对象。b是一个可选的函数参数。
+var JSONString1 = '{"k1":"v1","k2":"v2"}';
+console.log(JSON.parse(JSONString1));//输出Object {k1: "v1", k2: "v2"}
+函数参数b按从里到外的顺序作用在对象的所有属性上，最后一个作用的是对象本身：
+//对象的每一个属性的值加1
+var text = '{ "key1":1, "key2":2, "key3":2.2}';
+var obj = JSON.parse(text, function (key, value) {
+    if(key === '')//当遇到对象本身时，不进行加1操作
+        return value;
+    return value+1;//对属性值加1
+});
+console.log(obj);//输出Object {key1: 2, key2: 3, key3: 3.2}
+
+JSON对象转换为JSON字符串
+JSON.stringify(a,b,c)，a是待转换的JSON对象，b和c为可选参数。
+var JSONObject = {"k1":"v1","k2":"v2"};
+JSON.stringify(JSONObject);//JSON对象转换为JSON字符串
+参数b为函数时，该函数按照从里到外的顺序处理JSON对象的每一个属性，最后一个处理的是JSON对象本身，处理完后再转为JSON字符串：
+//对象的所有属性值加1，再转为字符串
+var JSONObject = {"k1":1,"k2":2.2};
+var JSONString = JSON.stringify(JSONObject,function(k,v){
+    if(k === '')//处理到了JSON对象本身
+        return v;
+    return v+1;//所有的属性的值加1
+});
+console.log(JSONString);//输出{"k1":2,"k2":3.2}
+参数b还可以是数组，数组存储的是属性的名字，用来指定只转换哪些属性：
+//转换对象中特定的属性
+var JSONObject = {"k1":1,"k2":2.2,"k3":3};
+var JSONString = JSON.stringify(JSONObject,["k1","k2"]);
+console.log(JSONString);//输出{"k1":1,"k2":2.2}
+这里简单介绍一下c：
+var str = ["name":"Tom","age":16];
+var obj1 = JSON.stringify(str);
+var obj2 = JSON.stringify(str,null,4);
+
+console.log(obj1);  //输出{"name":"Tom","age":16}
+
+console.log(obj2); //输出
+//{
+//    "name": "Tom",
+//    "age": 16
+//}
+参数c：文本添加缩进、空格和换行符，如果 c 是一个数字，则返回值文本在每个级别缩进指定数目的空格，如果 c 大于 10，则文本缩进 10 个空格。
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+内置对象
+Math,日期和异常处理
+Math类
+Math.E--- e     Math.PI--- 圆周率     Math.SQRT2--- 2的平方根     Math.LN2---2的自然对数
+
+
+随机数（返回数的范围为（0，1））
+console.log(Math.random());//输出0.1493135392665863
+Math.ceil//取大于该数的一个整数（4.3-->5）
+Math.floor//取小于该数的一个整数（4.3-->4）
+Math.round
+在一个区间内抽取随机数：
+Math.round(Math.random()*(最大区间值-最小区间值)+（最小区间值）)
+
+
+
+
+
+
+
+平方根
+Math.sqrt(x)返回x的平方根。
+Math.sqrt(4);//2
+Math.sqrt(2);//1.4142135623730951
+
+四舍五入
+Math.round(x)返回x四舍五入后的整数。
+Math.round(1.5);//2
+Math.round(1.49);//1
+
+
+求最值
+Math.max(x1,x2,....xn)返回参数的最大值，参数个数不限；
+Math.max(1,2,34,100);//100
+Math.max(-1,-2,-34,-100);//-1
+Math.min(x1,x2,....xn)返回参数的最小值；
+Math.min(1,2,34,100);//1
+Math.min(-1,-2,-34,-100);//-100
+
+求数组里面的最值(apply())
+let grade = [12,3,7,34,124];
+console.log(Math.max.apply(null,grade));
+
+
+
+
+涉及数字计算还有许多方法，可以直接百度JS Math对象
+
+
+
+
+异常处理
+try-catch捕获和处理错误
+用法如下：
+try {
+    //运行时可能出错的代码
+}catch(err) {
+    //处理出现的错误
+}
+
+
+
+
+
+时间的几种表示方法(获取当前时间)
+第一种方法：
+const date = new Date();//获取的是当前的时间
+console.log(date);//返回的是一个对象（object）类型
+console.log(date*1);//返回从1970年到现在的毫秒数（时间戳）
+
+第二种·方法：
+const hd = Date();
+console.log(hd);//返回的是一个字符串类型
+console.log(hd*1);//返回NAN
+
+
+时间差的计算
+方法一：
+const start = Date.now();
+for(let i = 0;i < 20000000;i++){}
+const end = Date.now();
+cosole.log((end-start)/1000+"秒");
+
+方法二：
+console.time("for");
+for(let i=0;i<2000000000000;i++){}
+console.timeEnd("for");
+
+
+
+const date = new Date("1990-9-22 3:22:18");
+console.log(date);
+console.log(date.getMonth());
+
+const date = new Date(1990,2,22,13,22,19);
+console.log(date);
+
+const param = [1990,2,22,13,22,19];
+const date = new Date(...param);
+console.log(date);
+
+
+
+时间戳和日期时间相互转化
+
+日期时间转化为时间戳：
+const date = new Date("199-08-22");
+console.log(date*1);
+console.log(Number(date));
+console.log(date.valueof());
+console.log(date.getTime());
+
+
+时间戳转化为日期
+const timestamp = date.valueOf();
+console.log(new Date(timestamp));
+
+
+
+
+
+
+Date()			返回当日的日期和时间。
+getDate()			从 Date 对象返回一个月中的某一天 (1 ~ 31)。
+getDay()			从 Date 对象返回一周中的某一天 (0 ~ 6)。
+getMonth()		从 Date 对象返回月份 (0 ~ 11)。
+getFullYear()		从 Date 对象以四位数字返回年份。
+getYear()			请使用 getFullYear() 方法代替。
+getHours()		返回 Date 对象的小时 (0 ~ 23)。
+getMinutes()		返回 Date 对象的分钟 (0 ~ 59)。
+getSeconds()		返回 Date 对象的秒数 (0 ~ 59)。
+getMilliseconds()		返回 Date 对象的毫秒(0 ~ 999)。
+
+注意：因为月份等输出的都是数字，这时我们可以先定义存放了每一个月字符串的数组，并结合数字进行调用！
+
+
+
+
+
+window.screen.width/height(获取当前设备的宽度和高度)
+
+window.innerHeight/window.innerWidth(窗口高度/宽度)
+
+window.location(获取window对象的当前url,包括端口号port等)
+
+
+
+
+
+
+
+数组，函数都可以看作是对象
+undefined(定义声明了一个变量却没有被赋值)
+null(值为空)
+以上两者都不具有对象
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+HTML DOM——文档元素的操作
+1：通过id获取元素
+文档元素一般都有一个id属性，它的值在本文档中唯一；
+其中document表示整个文档，getElementById()是document对象的一个方法，//选择单个元素节点
+参数是id属性的值myId。
+
+<p id="myId">这是我学习JavaScript的网址：</p>//定义标签
+var pElement = document.getElementById("myId");//获取id内容
+window.alert(pElement.innerText);//对内容进行显示
+
+
+2：通过类名获取文档元素
+文档元素的类名不唯一（存在多个文档元素的类名相同的情况）
+<p class="myName">段落</p>
+<a class="myName" href="https://www.educoder.net">这是一个链接</a>
+
+var myNodeList = document.getElementsByClassName("myName");//获取文档元素数组
+
+window.alert(myNodeList[0].innerText);
+
+
+
+3：通过标签名（<p><img>）获取文档元素
+<div id="div1">
+    <p id="p1">文本1</p>
+    <p id="p2">文本2</p>
+    <a name="a1">链接</a>
+</div>
+<div id="div2">
+    <p id="p3" name="a1">文本3</p>
+</div>
+
+var allDiv = document.getElementsByTagName("div");//获取文档元素数组
+window.alert(allDiv[0]);
+
+var allLink = allDiv[0].getElementsByTagName("a");//获取标签内部的子元素
+
+
+var myClassElement = document.querySelector(".myClass");//选择单个元素节点
+console.log(myClassElement);//只能获得第一个类名为myClass的元素。
+
+var pElement = document.querySelectorAll("p");//获取包含指定标签的数组
+
+
+节点数上的操作
+<body>
+<div id="div1">
+    <div class="cl1">
+        <p>文本</p>
+        <a>超链接</a>
+    </div>
+    <div class="cl2">
+        <select id="se">
+            <option>红</option>
+            <option>黄</option>
+            <option>蓝</option>
+        </select>
+    </div>
+</div>
+</body>
+
+
+1：获取最外层的div节点：var div1 = document.getElementById("div1");
+2：获取它的第一个子节点（class值为cl1的节点）：var cl1 = div1.firstElementChild;
+3：获取cl1的最后一个子节点，即a节点：var aElement = cl1.lastElementChild;
+4：输出：console.log(aElement.innerText);//超链接
+
+5：前一个兄弟节点：var left = aElement.previousElementSibling;//p标签
+6：后一个兄弟标签：var right = left.nextElementSibling;//a标签
+7：子节点列表
+var selectTag = document.getElementById("se");
+console.log(selectTag.children[0].innerText);
+console.log(selectTag.children[1].innerText);
+console.log(selectTag.children[2].innerText);
+
+
+
+属性值的获取
+1：<a href="https://www.educoder.net" target="_blank">EduCoder</a>
+2：var aElement = document.getElementsByTagName("a").[0];
+3：var hrefValue = aElement.href;
+console.log(hrefValue);//输出https://www.educoder.net
+
+或者：
+console.log(aElement.getAttribute("href"));//输出https://www.educoder.net
+
+两者区别：第一种方法返回的是一个实际的值，而第二个返回的是一个字符串
+
+注意：class等文档元素的属性，不能直接用文档元素对象.class来获取
+解决方案：
+<a class="aClass" id="aId">超链接</a>
+document.getElementById("aId").className;//返回"aClass"
+document.getElementById("aId").getAttribute("class");//返回"aClass"
+
+
+属性值的设置
+<a id="a1" href="https://www.google.com">EduCoder</a>
+document.getElementById("a1").href="https://www.educoder.net";
+
+需要注意：标签之间的文本用innerText属性表示，要修改上面超链接里面的文本，需要这样：
+document.getElementById("a1").innerText="educoder";
+当然,innerText完全可以被性能更好，被更多浏览器支持的textContent取代。
+
+或者：
+document.getElementById("a1").setAttribute("href","https://www.educoder.net");//两个参数分别为属性名称和属性值
+
+
+
+
+
+innerText里面可以包含标签（<a herf="www.xiaohui.com">点我</a>）
+
+
+把null赋值给变量来释放变量的内存；
+
+使用nodeValue属性获取和更新文本节点
+exp:<li id="one"><em>fresh</em>tigs</li>
+
+document.getElementById("one".firstchild/.nextSibling.nodeValue)//返回text文本节点里面的内容tigs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+创建节点
+document.createElement("tagName")用来创建一个新的Element节点（即文档元素，a,p,img等）
+exp:
+var newA = document.createElement("a");//创建超链接节点
+newA.src = "https://www.educoder.net";//设置超链接的目的地址
+
+
+创建一个form节点，然后赋值给变量newNode，设置节点的id值为myForm，method值为post:
+var newNode = document.createElement("form");
+newNode.method = "post";
+newNode.id = "myForm";
+
+
+
+插入节点：
+方法1：appendChild()
+exp:
+var node1 = document.getElementById("s1");//选择要增加的父节点
+var node2 = document.createElement("option");//增加一个option节点
+node2.innerText = "湘潭";//增加节点里面的内容
+node1.appendChild(node2);//添加到指定的区域
+
+方法2：insertBefore()[可以指定插入节点的位置]
+var pNode = document.getElementById("s1");//选择要增加的父节点
+var node1 = document.createElement("option");//增加一个option节点
+node1.innerText = "湘潭";//增加节点里面的内容
+var node2 = document.getElementById("zz");
+//将内容为"湘潭"的节点插入到内容为"株洲"的节点前面
+pNode.insertBefore(node1,node2);
+
+
+
+
+注意：创建节点和插入节点要结合使用
+此外，还可以使用setAttribute(name,value)来设置属性值（id,class,title等），使用getAttribute来获取属性值的内容
+
+
+
+
+
+
+删除节点（removeChild()）
+exp:
+<ul id="parent">
+  <li>提子</li>
+  <li>车厘子</li>
+  <li id="child3">荔枝</li>
+</ul>
+
+第一步：获取父节点，即ul节点：
+var parentNode = document.getElementById("parent");
+
+第二步：获取待删除的子节点：
+var childNode = document.getElementById("child3");
+
+第三步：父节点调用removeChild()方法删除子节点：（也可以使用removeAttribute方法）
+parentNode.removeChild(childNode);
+
+
+
+替换节点：
+方法一：替换节点=删除节点+新增节点
+方法二：replaceChild()方法
+replaceChild(a,b)的调用者是要被替换的节点的父节点，a是新的节点，b是被替换的节点。
+exp:
+<ul id="parent">
+  <li id="child1">黄山</li>
+  <li id="child2">庐山</li>
+  <li id="child3">泰山</li>
+</ul>
+
+第一步：获取父节点：
+var parNode = document.getElementById("parent");
+
+第二步：获取被替换的子节点：
+var oldNode = document.getElementById("child3");
+
+第三步：创建新节点：
+var newChild = document.createElement("li");
+newChild.innerText = "武夷山";
+
+第四步：替换
+parNode.replaceChild(newChild,oldNode);
+
+
+
+
+
+
+
+
+
+node的意思是节点
+nodeName节点名称（p,div...）
+nodeValue节点内容
+nodeType节点类型
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+事件处理
+
+1：注册事件处理程序
+方法1：//为了script与html分离，不建议使用该方法
+<button id="button1" onclick="listenButton1()">按钮1</button>
+<script>function listenButton1() { alert("监听button1");}</script>
+方法2：
+<button id="button2">按钮2</button>
+<script>
+function listenButton2() {alert("监听button2");}
+var button2 = document.getElementById("button2");
+        button2.onclick = listenButton2;//获取内容id,接着添加onclick方法
+</script>
+
+要注意的是，时间名称的命名是在事件前缀+on;
+
+
+
+
+
+
+
+
+
+2：文档加载事件
+<body  onload="loadEvent()">
+    <script>
+        function loadEvent() {
+        alert("Welcome!");
+        }       
+    </script>
+</body>
+
+
+3：鼠标事件
+click--onclick--按下并且释放鼠标
+dbclick--ondbclick--双击鼠标
+mousedown--onmousedown--按下鼠标按键
+mouseup--onmouseup--释放鼠标按键
+mousemove--onmousemove--移动鼠标
+mouseover--onmouseover--鼠标进入元素
+mouseout--onmouseout--鼠标离开元素
+
+方法一：
+1：标签内定义对应方法
+ <p id="p" onmousedown="downfunc()" onmouseup="upfunc()">点我</p>
+2：定义使用该方法时要做的事情
+function downfunc() {document.getElementById("p").innerText = "鼠标已经按下";}
+function upfunc() {document.getElementById("p").innerText = "鼠标已经释放";}
+
+方法二：
+1：定义标签
+ <p id="p">text</p>
+ <button id="but"> button</button>
+
+2：通过addEventListener为按钮绑定一个事件处理程序，用来处理按钮的鼠标单击事件；
+在事件处理程序中，通过id获取p元素，赋给变量myElement，然后设置当按钮被单击后，
+p里面的文本被改变为clicked；
+var myButton = document.getElementById("but");//选择要点击的区域id，并赋值给myButton
+            myButton.addEventListener("click",function() {
+                var myElement = document.getElementById("p");
+                myElement.innerText="clicked";
+            })
+
+
+
+4:键盘事件（三个只是方法，我们需要做的事情是定义需要出现结果的函数）
+1：点击按键
+<body onkeypress="keyEvent(event)">
+    <p>
+        keypress event
+    </p>
+</body>
+<script>
+    function keyEvent(event) {
+        console.log("编码是:"+event.which);
+    }
+</script>
+
+2：按下按键
+<body onkeydown="downEvent(event)">
+</body>
+<script>
+    function downEvent(event) {
+        console.log("编码是:"+event.which);
+    }
+</script>
+
+3：释放按键
+<body onkeyup="upEvent(event)">
+</body>
+<script>
+    function upEvent(event) {
+        console.log("编码是:"+event.which);
+    }
+</script>
+
+
+
+
+5：表单事件
+form有很多子元素，分别表示不同类型的用户输入：例如input表示文本等类型；
+select表示下拉列表；button表示按钮。
+
+1：Change事件
+当用户输入文本，并且鼠标点击页面上的其他地方后，我们将在控制台打印出用户的输入。
+ <form>
+        <input id="t1" type="text" onchange="changeEve()"/>
+    </form>
+    <script>
+        function changeEve() {
+            var e = document.getElementById("t1");
+            console.log(e.value);
+        }
+    </script>
+
+
+2：select事件
+文本框中的文本被用户选中时发生
+<body>
+    <input type="text" value="赵钱孙李，周吴郑王" onselect="selectEve()"/>
+    <script>
+        function selectEve() { 
+            console.log(window.getSelection().toString());
+        }
+    </script>
+</body>
+
+
+3：submit事件
+通常情况下，在submit的事件处理函数中，校验用户的输入是否符合要求，比如密码的长度够不够。
+<body>
+    <form onsubmit="subEve()">
+        <input type="password" id="pw"/>
+        <input type="submit" value="提交" />
+    </form>
+    <script>
+    function subEve() {
+        var content = document.getElementById("pw").value;
+        if (content.length < 6) {
+            window.alert("密码不可以小于6位");
+        }
+    }
+    </script>
+</body>
+
+
+
+
+拖动事件
+将元素的draggable属性设置为true，即表示元素支持拖动。如：下面设置了p元素支持拖动：
+<p id="p1" draggable="true">
+    元素支持鼠标的拖动
+</p>
+也可以用下面的JavaScript代码设置p为可拖动的：
+document.getElementById("p1").draggable = true;
+
+ondrag()是元素正在拖动时触发的事件处理程序。
+如果元素一直在拖动的过程中，ondrag()会每隔350ms被触发一次
+exp:
+<body>
+    <div>
+        <p ondrag="dragging(event)" draggable="true">拖动我!</p>
+    </div>
+    <script>
+    function dragging(event) {
+        console.log("正在拖动");
+    }
+    </script>
+</body>
+
+
+ondragstart
+用户开始拖动元素时触发，可以带有一个event参数，其中的event.target表示拖动的元素
+<body>
+    <p ondragstart="dragStart(event)"  draggable="true">拖动我!</p>
+    <script>
+        function dragStart(event) {
+            console.log(event.target);
+            console.log("你要拖动的文本的内容是："+event.target.innerText);
+        }
+    </script>
+</body>
+
+
+事件冒泡
+事件冒泡是指，某个事件触发了某个元素的事件处理程序，接下来，就会自动沿着节点树往根节点的方向依次触发经过的路径上的所有元素的某个事件的处理程序。
+
+事件冒泡不是所有的时候都受到欢迎，有的时候需要控制它的发生，使用event.stopPropagation()即可。
+function clickChild() {
+   console.log("子");
+   window.event?window.event.cancelBubble=true:event.stopPropagation(); 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+事件监听器
+概述：事件监听器近来才加入事件处理大家庭，它可以同时触发多个函数，但是在旧的浏览器中不被支持
+
+
+
+语法如下：
+element.addEventListener('event',functionName,[Boolean]);//三个参数分别表示事件名称，遇到该事件需要的方法（函数），以及是否为捕获方式的事件响应，通常被设置为false
+
+exp:elUsername.addEventListener('blur',checkUsername,false);
+注意，这个示例的函数方法去掉了小括号，因为小括号表示函数会在页面加载到这里时运行，而不是事件发生时运行
+
+
+此外，和传统的HTML及DOM事件处理程序不同，当指定需要监听的事件名称时，不需要在名称前面加上“on”这个前缀
+如果需要移除事件监听器可以使用removeEventListener()方法来移除指定元素的事件，参数和添加方法相同；
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+浏览器对象模型
+1：定时器（只会执行一次）
+设置定时器（window.setTimeout(a,b)），用来指定函数a在延迟b毫秒时间后执行，即在window.setTimeout(a,b)这句话开始执行的b毫秒之后，再执行a函数。
+exp:
+<body>
+    <p onclick="al()">
+        单击此处4秒后弹出警告框
+    </p>
+    <script>
+    var id;
+    function al() {
+        id = window.setTimeout(showAlert,4000);
+    }
+    function showAlert() {
+        window.alert("警告框");
+    }
+</script>
+</body>
+a:在文本标签（单击此处弹出警告框）设置onclick事件方法
+b:函数调用该方法，并使用setTimeout()函数设置时间
+c:定义自定义函数，表示在设置的时间到了之后需要做什么事情
+
+取消定时器（window.clearTimeout(id)）
+<body>
+    <p onclick="al()">
+        单击此处4秒后弹出警告框
+    </p>
+    <p onclick="a2()">
+        单击此处取消警告框的弹出
+    </p>
+    <script>
+    var id;
+    function al() {
+        id = window.setTimeout(showAlert,4000);
+    }
+    function showAlert() {
+        window.alert("警告框");
+    }
+    function a2() {
+        window.clearTimeout(id);
+    }
+</script>
+</body>
+a:设置点击弹出警告框区域方法以及点击取消警告框区域方法
+b：定义弹出框函数
+c:定义点击后的要出现的事件
+d:定义取消弹出框函数
+
+
+
+
+2：循环定时器（指定时间间隔上重复执行函数）（setInterval(a,b)：每隔b毫秒，执行一次a函数。）
+<body>
+    <p onclick="updateTime()">
+        开始更新时间
+    </p>
+    <p id="timeContainer">
+    </p>
+    <script>
+    var id;
+    function updateTime() {
+        id = window.setInterval(showTime,1000);
+    }
+    function showTime(){        document.getElementById("timeContainer").innerText = new Date();
+    }
+</script>
+</body>
+a:调用方法
+b:定义调用该方法后要做的事情
+取消定时（window.clearInterval(id)）
+
+
+在调用事件处理函数的时候，有的是JS自带的，而有的是自定义的，注意区分
+标签内容里面的属性要么是id,要么是特定方法，它们都是要由script进行定义，调用
+
+
+
+
+3：location对象
+location对象就是window.location，记载了浏览器当前所在的窗口的URL（统一资源定位符）信息，它常常被用来实现网页的跳转。
+
+
+1：页面的跳转
+location.href属性表示当前窗口所在页面的地址，比如，如果我们在本网站的首页（https://www.educoder.net/），打印window.location.href：
+<body>
+    <script>
+        console.log(window.location.href);
+    </script>
+</body>
+
+window.location.href还是可写的，如果把它设置为一个新的地址，当前窗口将立即打开这个新的地址，这是实现页面跳转的一种方式。比如下面的例子：
+<body>
+    <p onclick="toNew()">
+        点我调到EduCoder首页
+    </p>
+    <script>
+        function toNew() {
+            window.location.href = "https://www.educoder.net";
+        }
+    </script> 
+</body>
+
+2：location的其他属性
+<body onload="printInfo()">
+    location attribute
+    <script>
+        function printInfo() {
+            var loc = window.location;
+            console.log("host:"+loc.host);
+            console.log("hostname:"+loc.hostname);
+            console.log("pathname:"+loc.pathname);
+            console.log("port:"+loc.port);
+            console.log("protocal:"+loc.protocal);
+            console.log("search:"+loc.search);
+        }
+    </script>
+</body>
+
+
+
+
+
+
+
+4：对话框
+1：警告框：window.alert(msg)
+2：确认框：window.confirm(msg)   用户在弹出的框里面选择确认或者取消后，会返回true或者false
+3：输入框：window.prompt(a,b)弹出一个输入框，供用户输入关键信息。其中a是输入框的提示语，b是输入框里面默认的内容。
+
+
+
+5：窗口
+window.open(url,name,specs,replace)用来打开一个浏览器的窗口，它有四个参数：
+
+url表示窗口里面的文档的地址；
+
+name有两种情况
+1：当name是窗口的名字，浏览器会先判断这个窗口是否已经打开。已经打开则用新的url里面的文档替换这个窗口里面原来的文档，反映到浏览器上是不会有新的标签页打开，
+但是一个已存在的标签页会刷新。
+没有打开则打开一个新的窗口，并且载入url里面的文档
+2：如果name是_blank、_self里面中的任何一个
+_blank
+打开新的窗口，载入地址为url的文档
+_self
+不打开新的窗口，用地址为url的文档替换掉当前的文档
+
+
+specs是用来控制新窗口的尺寸等特征，比如值为width=200,height=100时，表示新窗口宽度为200px，高度为100px。
+
+
+replace用来控制新的窗口在浏览器的浏览历史里面如何显示。为true表示装载到窗口的url替换掉浏览历史中的当前条目；为false表示装载到窗口的url创建一个新的条目
+
+
+
+打开和关闭窗口
+<body>
+    <p onclick="openNewWindow()">打开新窗口</p>
+    <p onclick="closeNewWindow()">关闭新窗口</p>
+    <script>
+        var w;
+        function openNewWindow() {
+            w = window.open("Demo1.html", "windowName");
+        }
+        function closeNewWindow() {
+            w.close();
+        }
+    </script>
+</body>
+
+注意：上面提及的窗口是要自己事先准备好的，并非JS函数自己生成！
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+字符串转化为数字的几种方法
+const string = "99";
+const string1="99.23sriugheriub"
+1:console.log(string*1+67);
+2:console.log(Number(string)+67);
+3:console.log(parseInt(string1));//99.23
+
+
+其他类型数据转化为字符串(String())
+const number=66;
+1:const str = number + "";
+console.log(str);
+2:console.log(String(number));
+
+
+
+字符串转化为数组(split())
+const cms="dfhrth"
+console.log(cms.split(""));
+
+
+数组转化为字符串(join())或者toString();
+const array=["dfgrrt","dfgrt"];
+console.log(array.join("|"));
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+
+Boolean类型隐式转化原理
+true----1
+false---0
+
+if([])  console.log("xsdgdf");
+if({})  console.log("dsvg");
+
+
+其他类型转化为布尔类型
+1:let number = 0;    number = !!number;
+2:console.log(Boolean(number))
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+let number = 99.657
+
+判断是否为整数函数，返回布尔类型·
+console.log(Number.isInteger(number));
+
+保留小数点后几位函数
+console.log(number.toFixed(2));
+
+Consolas, 'Courier New', monospace
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+=======================================================================================================
+JQuery
+
+jQuery只是一个javascript文件，因此jQuery能够实现的javascript也可以实现
+jQuery一个最大的特点就是用最简洁的代码实现更多的功能
+
+
+1:查找元素
+在使用JQuery时，经常使用CSS样式选择器来选择元素，因此查找元素,基本选择器,子节点查找器，属性查找器参照CSS文档区域
+
+1.1基本筛选器
+:not(selector)               除选择器之外的所有元素（比如div:not('#summary')）
+
+:first                             选中元素中的第一个元素
+
+:last		    选中元素中的最后一个元素
+
+:even		    选中元素中索引编号为偶数的元素
+
+:odd                             选中元素中索引编号为奇数的元素
+
+:eq(index)                     选中元素中索引编号为参数中指定数字的元素
+
+:gt(index)                      选中元素中索引编号大于参数中指定数字的元素
+
+:lt(index)                       选中元素中索引编号小于参数中指定数字的元素（比如$('li:lt(3)').hide().fadeIn(1500)）;
+
+:header                        选中所有的<h1>到<h6>元素（比如$(':header').addClass('headline'),选中所有的<h1>到<h6>元素并添加类属性）
+
+:animated                     选中正在动画的元素
+
+:focus                           选中当前正在聚焦的元素
+
+
+
+
+
+1.2内容筛选器
+:contains('text')                  包含参数中指定文本的元素
+
+:empty                               没有子节点的所有元素
+
+:parent                               拥有子节点（文本或子元素）的元素
+
+:has(selector)                     至少包含一个匹配选择器的元素（比如，div:has(p)匹配所有包含<p>元素的div元素）
+
+
+
+
+
+1.3可见性筛选器
+:hidden                                 所有隐藏的元素
+
+:visible                                  所有在页面布局中占据空间的元素
+不会选中的元素包括:display:none; height/width:0;祖先元素被隐藏
+会选中的元素包括：visibility:hidden;opacity:0;因为它们都会在布局中占据空间
+
+
+
+1.4表单
+:input			选中所有的input元素
+
+:text			选中文本类型的input元素
+
+
+:password		选中所有密码类型的input元素
+
+
+:radio			选中所有的单选按钮
+
+
+:checkbox			选中所有的复选框
+
+
+:submit			选中所有的提交按钮
+
+
+:image			选中所有的图片按钮
+
+
+:reset			选中所有的重置按钮
+
+
+:button			选中所有的button元素
+
+
+:file			选中所有的文件选择器
+
+
+:selected			选中下拉列表中所有的列表项（option）
+
+
+:enabled			选中所有可用的表单元素（所有表单元素的默认状态）
+
+
+:disabled			所有被禁用的表单元素
+
+
+:checked			所有被选中的单选按钮或复选框
+
+
+
+2：将jquery选取的结果缓存在变量中
+创建jQuery对象（变量）需要消耗时间,CPU资源和内存
+变量声明：$listtems = $('li');
+
+
+3：循环
+exp:
+<li id="one" class="hot"><em>fresh</em>figs</li>
+<li id="two" class="hot">pine nuts</li>
+<li id="three" class="hot">honey</li>
+<li id="four">balsamic vinegar</li>
+
+
+$('li em').addClass('seasonal');
+$(li.hot).addClass('favorite');
+
+t通过以上jQuery语句，第一个选择器只应用于一个元素，并为其class属性设置新的值；第二个选择器同时作用于三个值；
+jQuery的这一种选择方式就类似于正则表达式，符合所规定的规则就选中；要注意的是对于元素之间的组合用空格隔开，而对于元素与class之间的组合需要用 . 来组合链接
+
+
+4：链式操作
+$('li[id != "one"]').hide().delay(500).fadeIn(1400);
+如果需要在同一个选取结果上使用多个jQuery方法，可以列出这些方法并用点号隔开，这种方法就叫做链式操作；
+要注意的一点是，如果其中的一个方法不工作了，那么剩下的方法也会停止工作；
+
+
+
+
+
+5：检测页面是否已经可以使用
+使用方法：
+$(document).ready(function{
+    //当DOM树构建完成之后需要做的事情
+})
+
+简写：$(function(){
+ 
+});
+
+
+
+6:获取元素内容
+6.1: .html
+$('ul').html();-----------使用该方法会返回ul下面的所有内容（包括元素节点名称，即整个DOM树都会获取返回）
+$('li').html();----------它只会返回第一个li节点，使用.each()方法可以获取到所有的li节点
+
+6.2: .text()
+$('ul').text();----------使用该方法获取ul下面所有的文本内容（注意，这里是所有）
+
+如果要获取<input>或<textarea>元素的内容，则使用.val()方法
+
+
+6.3：添加内容
+exp1:
+var $listHTML = $('ul').html();
+$('ul').append($listHTML);
+结果将会添加到<li>（每一个）元素之后
+
+
+exp2:
+var $listText = $('ul').text();
+$('ul').append('<p>' + $listText + '</p>');
+结果将会添加到<ul>元素之后
+
+
+
+exp3:
+var $listItemHTML = $('li').html();
+$('li').append('<i>' + $listItemHTML + '</i>');
+结果只选择第一个<li>元素的内容添加到每一个<li>元素后面
+
+
+exp4:
+var $listItemText = $('li').text();
+$('li').append('<i>' + $listItemText + '</i>');
+结果将会获取到所有<li>元素里面的内容并且把所有的内容添加到每一个<li>元素后面
+
+注意，这里主要是要学会append的用法
+
